@@ -266,12 +266,12 @@
                   <div class="latest-offers-box-inner">
                     <div class="latest-offers-box-overflow">
                       <div class="latest-offers-box-photo">
-                        <img class="img-fluid" src="img/latest-offers/img-1.jpg" alt="latest-offers" />
+                        <img class="img-fluid" :src="featuredCars[0].img" alt="latest-offers" />
                       </div>
                       <div class="info">
-                        <div class="price-box-2"><sup>$</sup>650<span>/month</span></div>
+                        <div class="price-box-2"><sup>$</sup>{{featuredCars[0].price}}<span></span></div>
                         <h3>
-                          <a href="#">Toyota Prius</a>
+                          <span class="cursor-pointer ourOfferH3Span" @click="viewCarDetails(featuredCars[0])">{{featuredCars[0].make}}</span>
                         </h3>
                       </div>
                       <div class="new">New</div>
@@ -284,12 +284,12 @@
                   <div class="latest-offers-box-inner">
                     <div class="latest-offers-box-overflow">
                       <div class="latest-offers-box-photo">
-                        <img class="img-fluid" src="img/latest-offers/img-2.jpg" alt="latest-offers" />
+                        <img class="img-fluid" :src="featuredCars[1].img" alt="latest-offers" />
                       </div>
                       <div class="info">
-                        <div class="price-box-2"><sup>$</sup>740<span>/month</span></div>
+                        <div class="price-box-2"><sup>$</sup>{{featuredCars[1].price}}<span></span></div>
                         <h3>
-                          <a href="#">Lamborghini Huracan</a>
+                          <span class="cursor-pointer ourOfferH3Span" @click="viewCarDetails(featuredCars[1])">{{featuredCars[1].make}}</span>
                         </h3>
                       </div>
                       <div class="new">New</div>
@@ -302,12 +302,12 @@
                   <div class="latest-offers-box-inner">
                     <div class="latest-offers-box-overflow">
                       <div class="latest-offers-box-photo">
-                        <img class="img-fluid" src="img/latest-offers/img-3.jpg" alt="latest-offers" />
+                        <img class="img-fluid" :src="featuredCars[2].img" alt="latest-offers" />
                       </div>
                       <div class="info">
-                        <div class="price-box-2"><sup>$</sup>950<span>/month</span></div>
+                        <div class="price-box-2"><sup>$</sup>{{featuredCars[2].price}}<span></span></div>
                         <h3 class="category-title">
-                          <a href="#">Lamborghini</a>
+                          <span class="cursor-pointer ourOfferH3Span" @click="viewCarDetails(featuredCars[2])">{{featuredCars[2].make}}</span>
                         </h3>
                       </div>
                       <div class="new">New</div>
@@ -323,13 +323,13 @@
                 <div class="latest-offers-box-overflow">
                   <div class="latest-offers-box-photo">
                     <div class="latest-offers-box-photodd">
-                      <img class="img-fluid big-img" src="img/latest-offers/img-4.jpg" alt="latest-offers" />
+                      <img class="img-fluid big-img" :src="featuredCars[3].img" alt="latest-offers" />
                     </div>
                   </div>
                   <div class="info">
-                    <div class="price-box-2"><sup>$</sup>480<span>/month</span></div>
+                    <div class="price-box-2"><sup>$</sup>{{featuredCars[3].price}}<span></span></div>
                     <h3 class="category-title">
-                      <a href="#">Red ferrari Car 2018</a>
+                      <span class="cursor-pointer ourOfferH3Span" @click="viewCarDetails(featuredCars[3])">{{featuredCars[3].make}}</span>
                     </h3>
                   </div>
                   <div class="new">New</div>
@@ -502,36 +502,6 @@
 
 <script lang="ts">
 import { mapGetters, mapMutations } from 'vuex';
-
-const newCars = [
-  {
-    img: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/new-ghost-white-fr-3-4-1-1598911711.jpg',
-    title: 'Toyota Hilux',
-    price: '12,000,000',
-  },
-  {
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4n7ChA4fHFqilLvxqsZgKiKNnHy0qA9ghFg&usqp=CAU',
-    title: 'Mercedes Benz',
-    price: '12,000,000',
-  },
-  {
-    img:
-      'https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/homepage/families-gallery/2022/04_12/family_chooser_tecnica_m.png',
-    title: 'lamborghini',
-    price: '12,000,000',
-  },
-  {
-    img:
-      'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-honda-civic-sedan-1558453497.jpg?crop=1xw:0.9997727789138833xh;center,top&resize=480:*',
-    title: 'Honda',
-    price: '12,000,000',
-  },
-  {
-    img: 'https://d3ogcz7gf2u1oh.cloudfront.net/dealers/1000islands/assets/2019camry.png',
-    title: 'Toyota Hilux',
-    price: '12,000,000',
-  },
-];
 
 const brands = [
   {
@@ -858,7 +828,6 @@ export default {
 
   data() {
     return {
-      newCars,
       brands,
       featuredCars,
       isModal: { status: false, data: null },
@@ -890,11 +859,14 @@ export default {
   },
 
   mounted() {
-    this.$nextTick(() => {
-      console.log({fet: this.featuredCars});
-    });
+    this.$nextTick(() => {});
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.ourOfferH3Span {
+  color: #fff;
+  font-size: 22px;
+}
+</style>
