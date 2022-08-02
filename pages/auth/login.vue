@@ -4,7 +4,7 @@
       <div class="layout-body__1">
         <div class="body-container">
           <div class="body-logo">
-            <span class="text-xl icon-size"> TeiseiCar </span>
+            <span class="text-xl icon-size"> Elitemo </span>
           </div>
           <div class="body-main">
             <h1 class="text-2xl font-medium leading-10 text-primary-default-main">Sign In</h1>

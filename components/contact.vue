@@ -84,10 +84,10 @@
               <div class="detail align-self-center">
                 <h4>Email Address</h4>
                 <p>
-                  <a href="mailto:info@teisei.com">info@teisei.com</a>
+                  <a href="mailto:info@elitemo.com">info@elitemo.com</a>
                 </p>
                 <p>
-                  <a href="mailto:info@teisei.com">teiseiCar@gmail.com</a>
+                  <a href="mailto:info@elitemo.com">elitemoCar@gmail.com</a>
                 </p>
               </div>
             </div>

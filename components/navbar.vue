@@ -7,7 +7,7 @@
           <div class="col-lg-6 col-md-8 col-sm-7">
             <div class="list-inline">
               <a href="/"><i class="fa fa-phone"></i>Need Support? +2347098</a>
-              <a href="tel:info@teiseicar.com"><i class="fa fa-envelope"></i>info@teiseicar.com</a>
+              <a href="tel:info@elitemocar.com"><i class="fa fa-envelope"></i>info@elitemocar.com</a>
             </div>
           </div>
           <div class="col-lg-6 col-md-4 col-sm-5">

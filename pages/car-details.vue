@@ -236,7 +236,7 @@
                 <div class="m-border"></div>
                 <ul class="contact-info">
                   <li><i class="flaticon-pin"></i>20, Lekki avenue</li>
-                  <li><i class="flaticon-mail"></i><a href="mailto:info@teisei.com">info@teisei.com</a></li>
+                  <li><i class="flaticon-mail"></i><a href="mailto:info@elitemo.com">info@elitemo.com</a></li>
                   <li><i class="flaticon-phone"></i><a href="tel:+23470872828">+234709893383</a></li>
                 </ul>
                 <div class="social-list clearfix">

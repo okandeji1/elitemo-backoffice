@@ -14,7 +14,7 @@
           </div>
           <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="about-text">
-              <h3>Welcome to Teisei Car</h3>
+              <h3>Welcome to Elitemo Car</h3>
               <P
                 >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
                 ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has of type and

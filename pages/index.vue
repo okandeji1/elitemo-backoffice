@@ -20,7 +20,7 @@
             <img class="d-block w-100 h-100" src="img/banner/img-4.jpg" alt="banner" />
             <div class="carousel-content prl-30 container banner-info-2 bi-2 text-start">
               <div class="typing">
-                <h2>Welcome to Auto Car</h2>
+                <h2>Welcome to Elitemo</h2>
               </div>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
               <a href="#" class="btn-8">

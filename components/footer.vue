@@ -52,7 +52,7 @@
               <div class="m-border"></div>
               <ul class="contact-info">
                 <li><i class="flaticon-pin"></i>Address: Lekki,</li>
-                <li><i class="flaticon-mail"></i><a href="#">info@teiseicar.com</a></li>
+                <li><i class="flaticon-mail"></i><a href="#">info@elitemocar.com</a></li>
                 <li><i class="flaticon-phone"></i><a href="tel:+55-417-634-7071">+2347089746564</a></li>
                 <li><i class="flaticon-fax"></i>+234908364473</li>
               </ul>
@@ -106,7 +106,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6">
-            <p class="copy">© 2022 <a href="index.html#">TeiseiCar</a> All Rights Reserved.</p>
+            <p class="copy">© 2022 <a href="/">Elitemo</a> All Rights Reserved.</p>
           </div>
           <div class="col-lg-6 col-md-6">
             <div class="social-media clearfix">
