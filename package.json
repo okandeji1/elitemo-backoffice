@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nuxt-ts start",
-    "start:dev": "nuxt-ts",
+    "start": "doppler run --command='nuxt-ts start'",
+    "start:dev": "doppler run --command='nuxt-ts'",
     "build": "nuxt-ts build",
     "generate": "nuxt-ts generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",

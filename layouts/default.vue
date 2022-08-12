@@ -2,12 +2,12 @@
   <a-config-provider :locale="locale">
     <main class="h-screen overflow-x-hidden layout bg-primary-bg text-primary-default-main">
       <div class="bg-white">
-        <header :class="getSiteFormat == siteFormat ? 'mw-container' : ''">
+        <header class="mw-container">
           <car-settings />
         </header>
       </div>
       <header class="primary__gradient">
-        <div :class="getSiteFormat == siteFormat ? 'mw-container' : ''">
+        <div class="mw-container">
           <nav class="flex items-center justify-between h-16 px-4">
             <div class="left-nav">
               <nuxt-link to="/user/overview">
@@ -21,9 +21,8 @@
         <car-m-settings @visible="checkSentData" />
       </header>
 
-      <div :class="getSiteFormat == siteFormat ? 'mw-container' : ''">
+      <div class="mw-container">
         <main id="user-area" class="grid mx-1 my-1" :class="[gridType, collapseSidebar ? 'collapse-sidebar' : '']">
-          <!-- style="grid-template-columns: 220px 1fr" -->
           <aside id="asideleft" class="overflow-y-scroll sideleft">
             <div class="aside-bar">
               <div class="aside-header">
@@ -146,7 +145,6 @@
 </template>
 <script lang="ts">
 import { mapGetters, mapMutations, mapActions } from 'vuex';
-import settings from '~/components/settings.vue';
 
 const tenantUserLinks = [
   {
@@ -166,13 +164,13 @@ const tenantUserLinks = [
         id: 2,
         title: 'Dealers',
         icon: 'transaction-list',
-        link: '/user/payments/transaction-list',
+        link: '/user/#',
       },
       {
         id: 3,
-        title: 'Products',
+        title: 'Cars',
         icon: 'transaction-list',
-        link: '/user/payments/transaction-list',
+        link: '/user/main/cars',
       },
       {
         id: 4,
@@ -362,7 +360,6 @@ const unAuthhUserLinks = [
 ];
 
 export default {
-  components: { settings },
   head() {
     return this.$nuxtI18nSeo();
   },
@@ -373,11 +370,6 @@ export default {
       theme: 'settings/getTheme',
       getSiteFormat: 'settings/getSiteFormat',
     }),
-
-    beforeCreate() {
-      // @ts-ignore
-      this.form = this.$form.createForm(this);
-    },
 
     gridType() {
       // @ts-ignore
@@ -424,7 +416,7 @@ export default {
 
   data() {
     return {
-      siteFormat: 'FIXED_WIDTH',
+      siteFormat: '100%',
       collapseSidebar: false,
       tenantUserLinks,
       unAuthhUserLinks,

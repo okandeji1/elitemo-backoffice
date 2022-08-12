@@ -9,8 +9,8 @@
         <div  class="flex items-center settings-right">
           <div class="py-2 mr-2 text-xs">
             <span>Welcome </span>
-            <a>John Dow</a>
-            <span>(ID: 123048</span>
+            <span>{{ loggedInUser.username }}</span>
+            <span>(ID: {{ loggedInUser.userId }})</span>
           </div>
 
           <span class="text-sm font-bold capitalize cursor-pointer unit" @click="logout">LOGOUT</span>
@@ -37,6 +37,7 @@ export default Vue.extend({
 
   computed: {
     ...mapGetters({
+      loggedInUser: 'loggedInUser',
       settingsMenu: 'settings/settingsMenu',
       theme: 'settings/theme',
       timezone: 'settings/timezone',

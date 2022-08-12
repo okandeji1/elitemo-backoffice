@@ -116,7 +116,7 @@ const transactionColumns = [
   },
 ];
 
-export default Vue.extend({
+export default {
   // middleware: 'auth',
 
   computed: {
@@ -349,7 +349,7 @@ export default Vue.extend({
       this.fillData();
     });
   },
-});
+};
 </script>
 
 <style lang="scss">

@@ -161,7 +161,7 @@ export default {
   auth: {
     redirect: {
       login: '/',
-      logout: '/',
+      logout: '/auth/login',
       home: '/user/overview',
     },
     resetOnError: true,
@@ -193,6 +193,7 @@ export default {
    */
 
   publicRuntimeConfig: {
+    apiKey: process.env.API_KEY,
     apiUrl: process.env.API_URL,
     websiteUrl: process.env.WEBSITE_URL,
   },

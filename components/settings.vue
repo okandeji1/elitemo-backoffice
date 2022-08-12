@@ -69,8 +69,8 @@
 
           <div class="py-2 mr-2 text-xs text-primary-alternate">
             <span>Welcome </span>
-            <span>john20</span>
-            <span>(ID: 100246)</span>
+            <span>{{ loggedInUser.username }}</span>
+            <span>(ID: {{ loggedInUser.userId }})</span>
           </div>
           <!-- TODO: Find another way without repetition -->
           <!-- Tenant and staff -->
@@ -91,7 +91,7 @@
               </a-menu>
             </a-dropdown>
           </div>
-          <div class="flex items-center unit user-area" >
+          <div class="flex items-center unit user-area">
             <nuxt-link to="/user/main/messages" class="flex">
               <svg-icon name="email" class="inline-block w-4 h-4 mr-1 cursor-pointer fill-current text-primary-alternate"></svg-icon>
             </nuxt-link>
@@ -110,7 +110,7 @@
             </div>
           </div>
           <button class="ml-2 text-white rounded-md bg-primary-m-danger unit">
-            <span class="text-sm font-bold capitalize cursor-pointer">LOGOUT</span>
+            <span class="text-sm font-bold capitalize cursor-pointer" @click="logout">LOGOUT</span>
           </button>
         </div>
       </div>
@@ -160,13 +160,9 @@ export default Vue.extend({
     };
   },
 
-  beforeCreate() {
-    // @ts-ignore
-    this.form = this.$form.createForm(this);
-  },
-
   computed: {
     ...mapGetters({
+      loggedInUser: 'loggedInUser',
       settingsMenu: 'settings/settingsMenu',
       oddsFormat: 'settings/oddsFormat',
       timezone: 'settings/timezone',
@@ -176,6 +172,11 @@ export default Vue.extend({
     }),
   },
   methods: {
+    async logout() {
+      // @ts-ignore
+      await this.$auth.logout();
+    },
+
     ...mapActions({
       initTheme: 'settings/initTheme',
       toggleTheme: 'settings/toggleTheme',

@@ -127,16 +127,7 @@ export default {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         this.isLoading = true;
-        const validateNumber = /[0-9]{11}/;
-
         try {
-          if (this.login.username.includes('-')) {
-            this.login.username = this.login.username.toUpperCase();
-          } else if (this.login.username.match(validateNumber)) {
-            this.login.username = this.login.username.replace('0', '+234');
-          } else {
-            this.login.username = this.login.username;
-          }
 
           await this.$auth.loginWith('local', {
             data: this.login,
