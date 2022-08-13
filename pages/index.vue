@@ -119,7 +119,7 @@
         <div class="section-header d-flex">
           <h2 data-title="Types of car">Featured Car</h2>
         </div>
-        <div class="row">
+        <div class="row" v-if="featuredCars.length > 0">
           <div class="col-lg-4 col-md-6" v-for="(item, index) in featuredCars" :key="index">
             <div class="car-box-3">
               <div class="car-thumbnail">
@@ -258,7 +258,7 @@
         <div class="section-header d-flex">
           <h2 data-title="Latest Offers">Our Offers</h2>
         </div>
-        <div class="row mb-10">
+        <div class="row mb-10" v-if="featuredCars.length > 0">
           <div class="col-lg-7 col-md-12 col-sm-12">
             <div class="row">
               <div class="col-md-12 col-sm-12">
