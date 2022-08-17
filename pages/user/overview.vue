@@ -83,7 +83,6 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
 import { mapGetters, mapMutations, mapActions } from 'vuex';
 
 // Transactions column

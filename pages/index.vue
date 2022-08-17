@@ -501,7 +501,7 @@
 </template>
 
 <script lang="ts">
-import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters, mapMutations, mapActions } from 'vuex';
 
 const brands = [
   {
@@ -856,10 +856,16 @@ export default {
       setCar: 'car/setCar',
       setBlog: 'blog/setBlog',
     }),
+
+    ...mapActions({
+      getDealerApi: 'dealer/getDealerApi',
+    }),
   },
 
   mounted() {
-    this.$nextTick(() => {});
+    this.$nextTick(() => {
+      this.getDealerApi({query: {}});
+    });
   },
 };
 </script>

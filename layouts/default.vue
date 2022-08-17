@@ -1,6 +1,6 @@
 <template>
   <a-config-provider :locale="locale">
-    <main class="h-screen overflow-x-hidden layout bg-primary-bg text-primary-default-main">
+    <main v-if="isAuthenticated" class="h-screen overflow-x-hidden layout bg-primary-bg text-primary-default-main">
       <div class="bg-white">
         <header class="mw-container">
           <car-settings />
@@ -164,7 +164,7 @@ const tenantUserLinks = [
         id: 2,
         title: 'Dealers',
         icon: 'transaction-list',
-        link: '/user/#',
+        link: '/user/main/dealers',
       },
       {
         id: 3,
@@ -176,7 +176,7 @@ const tenantUserLinks = [
         id: 4,
         title: 'Transactions',
         icon: 'transaction-list',
-        link: '/user/payments/transaction-list',
+        link: '/user/#',
       },
     ],
   },
@@ -209,19 +209,19 @@ const tenantUserLinks = [
         id: 1,
         title: 'Gateway 1',
         icon: 'balance',
-        link: '/user/merchant/gateway-1',
+        link: '/user/#',
       },
       {
         id: 2,
         title: 'Gateway 2',
         icon: 'balance',
-        link: '/user/merchant/gateway-2',
+        link: '/user/#',
       },
       {
         id: 3,
         title: 'Gateway 3',
         icon: 'balance',
-        link: '/user/merchant/gateway-3',
+        link: '/user/#',
       },
     ],
   },
@@ -360,6 +360,8 @@ const unAuthhUserLinks = [
 ];
 
 export default {
+  middleware: 'auth',
+
   head() {
     return this.$nuxtI18nSeo();
   },
@@ -369,6 +371,8 @@ export default {
       locale: 'settings/locale',
       theme: 'settings/getTheme',
       getSiteFormat: 'settings/getSiteFormat',
+      isAuthenticated: 'isAuthenticated',
+      loggedInUser: 'loggedInUser',
     }),
 
     gridType() {
@@ -451,9 +455,7 @@ export default {
       changeTheme: 'settings/changeTheme',
     }),
 
-    ...mapActions({
-      getLoggingUser: 'getLoggingUser',
-    }),
+    ...mapActions({}),
   },
 
   mounted() {
