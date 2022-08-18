@@ -28,9 +28,9 @@ export const actions = {
   async getCarsApi({ commit, state}, payload) {
     try {
       let url = '/api/v1/cars?';
-      // for (const [key, value] of Object.entries(payload.query)) {
-      //   url += `&${key}=${value}`;
-      // }
+      for (const [key, value] of Object.entries(payload.query)) {
+        url += `&${key}=${value}`;
+      }
       const res = await this.$axios.$get(url);
       if (res.status) return this.commit('car/setCars', res.data);
     } catch (error) {

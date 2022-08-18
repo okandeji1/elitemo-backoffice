@@ -5,7 +5,7 @@
     <div id="transaction-filter" class="m-4 bg-primary-btn-tert">
       <div class="border-b border-primary-divider">
         <div class="px-4 py-2">
-            <!--FIXME:  justify-end -->
+          <!--FIXME:  justify-end -->
           <div class="flex items-center w-full my-2">
             <lazy-car-export-excel
               :csvData="{
@@ -16,7 +16,7 @@
               }"
             />
 
-            <a-button class="ml-2 text-white bg-primary-m-warning"> Add  </a-button>
+            <a-button class="ml-2 text-white bg-primary-m-warning" @click="toggleAddDealerDrawer(true)"> Add </a-button>
           </div>
         </div>
       </div>
@@ -41,28 +41,23 @@
         </template>
         <template slot="loadUnload" slot-scope="index, record">
           <div>
-            <button
-              class="w-full px-1 mb-1 text-xs text-white rounded-sm bg-primary-m-danger"
-            >
-              delete
-            </button>
-            <button
-              class="w-full px-1 text-xs text-white rounded-sm bg-primary-m-success"
-            >
-              edit
-            </button>
+            <button class="w-full px-1 mb-1 text-xs text-white rounded-sm bg-primary-m-danger">delete</button>
+            <button class="w-full px-1 text-xs text-white rounded-sm bg-primary-m-success">edit</button>
           </div>
         </template>
       </a-table>
     </div>
+
+    <!-- Add dealer drawer -->
+    <lazy-car-add-dealer-drawer />
   </main>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
-watch: {
+  watch: {
     dealers() {
       if (this.dealers) {
         this.isLoading = false;
@@ -88,6 +83,13 @@ watch: {
           title: 'Name',
           scopedSlots: { customRender: 'name' },
         },
+        {
+          name: 'email',
+          dataIndex: 'email',
+          key: 'email',
+          title: 'Email',
+          scopedSlots: { customRender: 'email' },
+        },
         { name: 'phone', dataIndex: 'phone', key: 'phone', title: 'Phone', scopedSlots: { customRender: 'phone' } },
         {
           name: 'address',
@@ -101,14 +103,24 @@ watch: {
           scopedSlots: { customRender: 'action' },
         },
       ],
-    }
+    };
   },
 
   methods: {
-    ...mapActions({}),
+    ...mapMutations({
+      toggleAddDealerDrawer: 'settings/toggleAddDealerDrawer',
+    }),
+
+    ...mapActions({
+      getDealerApi: 'dealer/getDealerApi',
+    }),
   },
 
-  mounted() {},
+  mounted() {
+    this.$nextTick(() => {
+      this.getDealerApi({query: {}});
+    });
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -155,26 +167,6 @@ watch: {
   transition: opacity 0.3s;
   width: 100%;
 }
-// .ant-select-selection {
-//   display: block;
-//   box-sizing: border-box;
-//   background-color: #1a2633;
-//   border: 1px solid #d9d9d9;
-//   border-top-width: 1.02px;
-//   border-radius: 0.5rem;
-//   outline: none;
-//   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-//   -webkit-user-select: none;
-//   -moz-user-select: none;
-//   -ms-user-select: none;
-//   user-select: none;
-// }
-
-/* @screen md {
-  .ant-form {
-    width: 35rem;
-  }
-} */
 
 .form-row {
   border-bottom: 1px solid #dbdada;
@@ -235,7 +227,6 @@ watch: {
   height: 80px;
   color: #374562;
   font-weight: 600;
-  // background-color: #3f5072;
 
   @apply bg-primary-btn-tert text-primary-default-main;
 }
@@ -250,7 +241,6 @@ watch: {
 }
 
 .types .ant-select-selection {
-  // border: 1px solid #d9d9d9;
   border-top-width: 1.02px;
   border-radius: 0.5rem;
   @apply bg-primary-input;
@@ -308,7 +298,6 @@ watch: {
   display: flex;
   justify-content: center;
   padding: 15px;
-  // background: #3f5072;
   color: #fff;
   @apply bg-primary-bg-sec;
 }
@@ -325,7 +314,6 @@ watch: {
 .tran-skele {
   display: flex;
   flex-direction: row;
-  // justify-content: flex-start;
   align-items: center;
   width: 100%;
   box-sizing: border-box;

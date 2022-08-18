@@ -154,7 +154,6 @@ export default {
       return this.$v.login.password.$error;
     },
     isBtnDisabled() {
-      // return this.$v.$invalid || this.username == '' || this.password == '' ? true : false;
       return this.$v.login.$invalid;
     },
   },

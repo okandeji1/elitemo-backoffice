@@ -19,7 +19,7 @@ export const state = () => ({
   settingsMenu: false,
   siteFormat: 'FIXED_WIDTH',
   toggleMenu: false,
-  isLoading: false,
+  addDealer: false,
 });
 
 export const getters = {
@@ -51,9 +51,9 @@ export const getters = {
     return state.toggleMenu;
   },
 
-  getIsLoading(state) {
-    return state.isLoading;
-  }
+  addDealerDrawer(state){
+    return state.addDealer;
+  },
 };
 
 export const mutations = {
@@ -74,8 +74,8 @@ export const mutations = {
     return state.toggleMenu = !state.toggleMenu;
   },
 
-  setIsLoading(state) {
-    return state.isLoading = !state.isLoading;
+  toggleAddDealerDrawer(state, value) {
+    return (state.addDealer = value);
   },
 };
 

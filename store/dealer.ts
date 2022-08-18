@@ -40,4 +40,16 @@ export const actions = {
       });
     }
   },
+
+  async addDealerApi({ commit }, payload) {
+    try {
+      const res = await this.$axios.$post('/api/v1/dealers/add', payload);
+      return res;
+    } catch (error) {
+      notify({
+        type: 'error',
+        message: error.response.data.message,
+      });
+    }
+  },
 };

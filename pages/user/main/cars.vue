@@ -132,7 +132,7 @@ watch: {
   },
 
   mounted() {
-    this.getCarsApi({});
+    this.getCarsApi({query: {}});
   },
 };
 </script>
