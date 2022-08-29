@@ -16,7 +16,7 @@
               }"
             />
 
-            <a-button class="ml-2 text-white bg-primary-m-warning"> Add  </a-button>
+            <a-button class="ml-2 text-white bg-primary-m-warning" @click="addCar"> Add  </a-button>
           </div>
         </div>
       </div>
@@ -126,6 +126,10 @@ watch: {
   },
 
   methods: {
+    addCar(){
+      this.$router.push({ path: '/user/main/add-car' });
+    },
+
     ...mapActions({
       getCarsApi: 'car/getCarsApi',
     }),

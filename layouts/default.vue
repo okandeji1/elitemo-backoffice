@@ -2,12 +2,12 @@
   <a-config-provider :locale="locale">
     <main v-if="isAuthenticated" class="h-screen overflow-x-hidden layout bg-primary-bg text-primary-default-main">
       <div class="bg-white">
-        <header class="mw-container">
+        <header :class="getSiteFormat == siteFormat ? 'mw-container' : ''">
           <car-settings />
         </header>
       </div>
       <header class="primary__gradient">
-        <div class="mw-container">
+        <div :class="getSiteFormat == siteFormat ? 'mw-container' : ''">
           <nav class="flex items-center justify-between h-16 px-4">
             <div class="left-nav">
               <nuxt-link to="/user/overview">
@@ -21,7 +21,7 @@
         <car-m-settings @visible="checkSentData" />
       </header>
 
-      <div class="mw-container">
+      <div :class="getSiteFormat == siteFormat ? 'mw-container' : ''">
         <main id="user-area" class="grid mx-1 my-1" :class="[gridType, collapseSidebar ? 'collapse-sidebar' : '']">
           <aside id="asideleft" class="overflow-y-scroll sideleft">
             <div class="aside-bar">
@@ -176,7 +176,7 @@ const tenantUserLinks = [
         id: 4,
         title: 'Transactions',
         icon: 'transaction-list',
-        link: '/user/#',
+        link: '/user/main/transactions',
       },
     ],
   },
@@ -191,37 +191,9 @@ const tenantUserLinks = [
     subLinks: [
       {
         id: 1,
-        title: 'Staff',
+        title: 'Users',
         icon: 'balance',
-        link: '/user/network/staff',
-      },
-    ],
-  },
-  {
-    id: 8,
-    title: 'Merchant',
-    collapseIcon: 'income',
-    icon: 'arrow',
-    isOpen: true,
-
-    subLinks: [
-      {
-        id: 1,
-        title: 'Gateway 1',
-        icon: 'balance',
-        link: '/user/#',
-      },
-      {
-        id: 2,
-        title: 'Gateway 2',
-        icon: 'balance',
-        link: '/user/#',
-      },
-      {
-        id: 3,
-        title: 'Gateway 3',
-        icon: 'balance',
-        link: '/user/#',
+        link: '/user/network/users',
       },
     ],
   },
@@ -263,12 +235,12 @@ const tenantUserLinks = [
         icon: 'chart',
         link: '/user/reports/sales',
       },
-      {
-        id: 2,
-        title: 'Activity Log',
-        icon: 'chart',
-        link: '/user/reports/activity-log',
-      },
+      // {
+      //   id: 2,
+      //   title: 'Activity Log',
+      //   icon: 'chart',
+      //   link: '/user/reports/activity-log',
+      // },
     ],
   },
   {
@@ -309,34 +281,6 @@ const unAuthhUserLinks = [
         title: 'Overview',
         icon: 'balance',
         link: '/user/overview',
-      },
-      // {
-      //   id: 3,
-      //   title: 'Cash Desk',
-      //   icon: 'cashier-desk',
-      //   link: '/user/main/cashier-desk',
-      // },
-    ],
-  },
-  {
-    id: 2,
-    title: 'Print Odds',
-    collapseIcon: 'printer-2',
-    icon: 'arrow',
-    isOpen: true,
-
-    subLinks: [
-      {
-        id: 1,
-        title: 'Standard Print',
-        icon: 'balance',
-        to: '/user/print/standard-print',
-      },
-      {
-        id: 2,
-        title: 'Fast Print',
-        icon: 'f-print',
-        to: '/user/print/fast-print',
       },
     ],
   },

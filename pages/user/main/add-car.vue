@@ -60,6 +60,29 @@
                   <small class="text-xs text-red-600" v-if="!$v.car.sellingPrice.required">selling price is required</small>
                 </template>
               </div>
+              <div class="mb-4">
+                <label for="image" class="text-sm font-semibold text-primary-default-main"> Images</label>
+                <a-input
+                  @blur="$v.car.image.$touch()"
+                  size="large"
+                  type="file"
+                  name="image[]"
+                  :multiple="true"
+                  @change="handleFileUpload"
+                  class="mt-1"
+                >
+                </a-input>
+                <!-- <a-upload @blur="$v.car.image.$touch()" size="large"
+                name="file"
+                :multiple="true"
+                @change="handleFileUpload"
+                class="mt-1">
+                <i class="fa fa-upload" aria-hidden="true"></i>
+                </a-upload> -->
+                <template v-if="$v.car.image.$error">
+                  <small class="text-xs text-red-600" v-if="!$v.car.image.required">image is required</small>
+                </template>
+              </div>
             </div>
             <div class="mb-4 right">
               <div class="mb-4">
@@ -76,7 +99,7 @@
                 <a-select v-model="car.type" class="block mt-1" size="large">
                   <a-select-option v-for="(type, index) in types" :key="index" :value="type.slug"> {{ type.slug }} </a-select-option>
                 </a-select>
-                <template v-if="$v.car.dealer.$error">
+                <template v-if="$v.car.type.$error">
                   <small class="text-xs text-red-600" v-if="!$v.car.type.required">Select a car type</small>
                 </template>
               </div>
@@ -89,60 +112,50 @@
                   <small class="text-xs text-red-600" v-if="!$v.car.description.required">Description is required</small>
                 </template>
               </div>
-              <div class="mb-4">
-                <label class="text-sm font-semibold text-primary-default-main">Features</label>
-                <a-select
-                  size="large"
-                  v-model="car.features"
-                  @blur="$v.car.features.$touch()"
-                  default-value=""
-                  class="block mt-1 text-sm bg-primary-input"
-                  showSearch
-                >
-                  <a-select-option v-for="index in features" :key="index" :value="index"> {{ index }} </a-select-option>
-                </a-select>
-
-                <template v-if="$v.car.features.$error">
-                  <small class="text-xs text-red-600" v-if="!$v.car.features.required">Features is required</small>
-                </template>
-              </div>
             </div>
           </div>
-          <!-- <div class="pb-4 my-4 border-b border-gray-500 bank">
-            <div>
-              <p>Bank Name</p>
-              <p class="block">Ensure name matches with your bank name</p>
+          <div class="pb-4 my-4 border-b border-gray-500">
+            <div class="">
+              <h1 class="text-center text-2xl font-bold text-primary-default-main">Features</h1>
             </div>
 
             <div>
-              <label for="indoor"> Bank Name</label>
-              <a-select size="large" v-model="car.bankName" showSearch placeholder="Select Bank" class="block mt-1" @select="handleBank">
-                <a-select-option v-for="(item, index) in getBanks" :key="index" :value="item.slug">
-                  <img :src="item.logo" class="inline w-4 h-4 mr-4" alt="" />
-                  {{ item.name }}
-                </a-select-option>
-              </a-select>
+              <a-checkbox-group name="checkboxgroup" :options="features" @change="handleChecked" />
             </div>
-            <div>
-              <label for="indoor"> Account Number</label>
-              <a-input size="large" placeholder="Enter your Account Number" v-model="car.accountNumber" class="mt-1"> </a-input>
+          </div>
+          <div class="pb-4 my-4 border-b border-gray-500">
+            <div class="">
+              <h1 class="text-center text-2xl font-bold text-primary-default-main">Specifications</h1>
             </div>
-          </div> -->
-          <div class="pb-4 my-4 border-b border-gray-500 upload">
-            <div>
-              <label for="image"> Images</label>
-              <a-input @blur="$v.car.image.$touch()" size="large" type="file" name="image" :multiple="true" @change="handleFileUpload" class="mt-1">
-              </a-input>
-              <template v-if="$v.car.image.$error">
-                <small class="text-xs text-red-600" v-if="!$v.car.image.required">image is required</small>
-              </template>
+
+            <div class="bank">
+              <div class="mb-4" v-for="(item, index) in specData" :key="index">
+                <label class="text-sm font-semibold text-primary-default-main">{{ item.label }}</label>
+                <a-input
+                  size="large"
+                  :type="item.type"
+                  :placeholder="item.label"
+                  v-model.trim="specifications[item.model]"
+                  class="mt-1"
+                  @blur="$v.specifications[item.model].$touch()"
+                >
+                </a-input>
+                <template v-if="$v.specifications[item.model].$error">
+                  <small class="text-xs text-red-600" v-if="!$v.specifications[item.model].required">{{ item.label }} is required</small>
+                </template>
+              </div>
             </div>
           </div>
           <div class="my-4 submit">
             <div class="grid grid-cols-2 gap-4 mx-2 md:flex md:flex-row md:justify-between md:px-2 md:mx-4 button">
               <a-button size="large" @click="resetAgentForm" class="inline w-full my-3 text-white bg-primary-m-danger md:w-40">Reset</a-button>
 
-              <a-button @click="addCar" :disabled="$v.anyError" size="large" class="inline w-full my-3 text-white md:w-40 bg-primary-m-success"
+              <a-button
+                @click="addCar"
+                :disabled="$v.anyError"
+                :loading="isLoading"
+                size="large"
+                class="inline w-full my-3 text-white md:w-40 bg-primary-m-success"
                 >Apply</a-button
               >
             </div>
@@ -157,7 +170,7 @@ import { mapGetters, mapActions } from 'vuex';
 
 import { minLength, required } from 'vuelidate/lib/validators';
 import { message } from 'ant-design-vue';
-import { notify } from '../../../utils/utils';
+import { notify, cleanEmptyObj } from '../../../utils/utils';
 
 const features = [
   'Cruise Control',
@@ -171,10 +184,92 @@ const features = [
   'Automatic Climate Control',
   'Auto Start/Stop',
 ];
+
+const types = [
+  {
+    slug: 'FEATURED',
+  },
+  {
+    slug: 'NEW',
+  },
+];
+
+const specData = [
+  {
+    label: 'Fuel Type',
+    model: 'fuelType',
+    type: 'text',
+  },
+  {
+    label: 'Speed',
+    model: 'speed',
+    type: 'text',
+  },
+  {
+    label: 'Transmission',
+    model: 'transmission',
+    type: 'text',
+  },
+  {
+    label: 'Gears',
+    model: 'gears',
+    type: 'text',
+  },
+  {
+    label: 'Year',
+    model: 'year',
+    type: 'number',
+  },
+  {
+    label: 'Horse Power',
+    model: 'horsePower',
+    type: 'text',
+  },
+  {
+    label: 'Top Speed',
+    model: 'topSpeed',
+    type: 'text',
+  },
+  {
+    label: 'Drive Train',
+    model: 'driveTrain',
+    type: 'text',
+  },
+  {
+    label: 'Doors',
+    model: 'doors',
+    type: 'text',
+  },
+  {
+    label: 'Location',
+    model: 'location',
+    type: 'text',
+  },
+  {
+    label: 'Mileage',
+    model: 'mileage',
+    type: 'text',
+  },
+  {
+    label: 'Body Style',
+    model: 'bodyStyle',
+    type: 'text',
+  },
+  {
+    label: 'Condition',
+    model: 'condition',
+    type: 'text',
+  },
+  {
+    label: 'Engine',
+    model: 'engine',
+    type: 'text',
+  },
+];
+
 export default {
   computed: {
     ...mapGetters({
-      cars: 'car/getCars',
       dealers: 'dealer/getDealers',
     }),
   },
@@ -182,7 +277,12 @@ export default {
   data() {
     return {
       features,
+      types,
+      specData,
       car: this.createFreshDataObject(),
+      specifications: this.createFreshSpecObject(),
+      customToolbar: [],
+      isLoading: false,
     };
   },
 
@@ -196,9 +296,25 @@ export default {
         description: { required },
         costPrice: { required },
         sellingPrice: { required },
+        type: { required },
         features: { required },
-        specifications: { required },
         image: { required },
+      },
+      specifications: {
+        fuelType: { required },
+        speed: { required },
+        transmission: { required },
+        gears: { required },
+        year: { required },
+        horsePower: { required },
+        topSpeed: { required },
+        driveTrain: { required },
+        doors: { required },
+        location: { required },
+        mileage: { required },
+        bodyStyle: { required },
+        condition: { required },
+        engine: { required },
       },
     };
   },
@@ -208,7 +324,51 @@ export default {
   },
 
   methods: {
-    async addCar() {},
+    async addCar() {
+      this.isLoading = true;
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
+        this.car.specifications = this.specifications;
+        const newFormData = cleanEmptyObj(this.car);
+        const formData: any = new FormData();
+        for (const [key, value] of Object.entries(newFormData)) {
+          if (key === 'specifications' || key === 'features') {
+            formData.append(key, JSON.stringify(value));
+            continue;
+          }
+
+          if (key === 'image') {
+            // @ts-ignore
+            for (const file of value) {
+              formData.append('image', file);
+              continue;
+            }
+          }
+          formData.append(`${key}`, value);
+        }
+
+        // Proccess form
+        try {
+          const res = await this.addCarApi(formData);
+
+          if (res.status) {
+            this.createFreshDataObject();
+            this.createFreshSpecObject();
+            this.isLoading = false;
+
+            notify({
+              type: 'success',
+              message: res.message,
+            });
+          }
+        } catch (error) {}
+      }
+      this.isLoading = false;
+    },
+
+    handleChecked(e) {
+      this.car.features = [...e];
+    },
 
     beforeUpload(file) {
       const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
@@ -227,19 +387,39 @@ export default {
     },
 
     handleFileUpload(e) {
-      const file = e.target.files[0];
+      const files = e.target.files;
+      const images: any = [];
+      for (const file of files) {
+        const isValid = this.beforeUpload(file);
 
-      const isValid = this.beforeUpload(file);
-
-      if (!isValid) {
-        this.dealer.image = '';
-        return;
+        if (isValid) {
+          images.push(file);
+        }
       }
 
-      if (e.target.name === 'image') {
-        this.car.image = e.target.files[0];
+      if (images.length > 0) {
+        this.car.image = images;
       }
     },
+
+    // async handleFileUpload(e) {
+    //   const file = e.file;
+
+    //   const isValid = await this.beforeUpload(file);
+    //   console.log({isValid});
+
+    //   if (!isValid) {
+    //     console.log('invalid');
+    //     this.car.image = '';
+    //     return;
+    //   }
+
+    //   if (e.file.status === 'done') {
+    //     this.car.image = e.fileList;
+    //   }
+    //   console.log(this.car.image);
+
+    // },
 
     resetAgentForm() {
       this.car = this.createFreshDataObject();
@@ -256,15 +436,57 @@ export default {
         description: '',
         costPrice: '',
         sellingPrice: '',
-        features: '',
-        specifications: '',
-        image: '',
+        features: null,
+        image: null,
       };
     },
 
+    createFreshSpecObject() {
+      return {
+        fuelType: '',
+        speed: '',
+        transmission: '',
+        gears: '',
+        year: '',
+        horsePower: '',
+        topSpeed: '',
+        driveTrain: '',
+        doors: '',
+        location: '',
+        mileage: '',
+        bodyStyle: '',
+        condition: '',
+        engine: '',
+      };
+    },
+
+    responsiveCustomBar() {
+      const myCustomToolbar = [
+        ['bold', 'italic', 'underline'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['image', 'code-block'],
+        [{ color: [] }],
+        [{ script: 'super' }, { script: 'sub' }],
+        ['blockquote'],
+        [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+        [{ align: [] }],
+        ['link', 'image'],
+      ];
+
+      if (this.screens.xs == true) {
+        this.customToolbar = myCustomToolbar.slice(0, 2);
+      } else {
+        this.customToolbar = myCustomToolbar;
+      }
+    },
+
     ...mapActions({
-      getCarsApi: 'car/getCarsApi',
+      addCarApi: 'car/addCarApi',
     }),
+
+    mounted() {
+      this.responsiveCustomBar();
+    },
   },
 };
 </script>
@@ -278,18 +500,6 @@ export default {
 
 .layout-container {
   min-height: 100vh;
-}
-
-@media only screen and (min-width: 800px) {
-  .layout-body__2 {
-    background-image: url('https://res.cloudinary.com/dvuogdjyq/image/upload/v1632965495/soufiane-boissady-SmYgs9HJZu8-unsplash_ksq2m1.jpg');
-    height: 100%;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    display: block;
-  }
 }
 
 .layout-body__1 {

@@ -138,7 +138,6 @@ export default {
         const newFormData = this.dealer;
         const formData: any = new FormData();
         for (const [key, value] of Object.entries(newFormData)) {
-          console.log(`${key}`, value);
           formData.append(`${key}`, value);
         }
 
@@ -157,6 +156,7 @@ export default {
           });
         } catch (error) {}
       }
+      this.isLoading = false;
     },
 
     beforeUpload(file) {

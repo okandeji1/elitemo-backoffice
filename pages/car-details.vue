@@ -14,22 +14,24 @@
               <div class="heading-car clearfix">
                 <div class="pull-left">
                   <h3>{{ car.make }}</h3>
-                  <p><i class="flaticon-pin"></i>123 Leki,</p>
-                </div>
-                <div class="text-right">
-                  <div class="price-box-3">{{ car.price }}</div>
+                  <p><i class="flaticon-pin"></i>{{car.specifications.location}}</p>
                 </div>
               </div>
               <div class="product-slider-box cds-2 clearfix mb-30">
                 <div class="product-img-slide">
                   <div class="slider-for">
-                    <!-- FIXME: loop cars here -->
-                    <img :src="car.img" class="img-fluid w-100" alt="slider-car" />
+                    <!-- FIXME: loop cars here and click event -->
+                    <!-- <div v-for="img in car.images">
+                      <img :src="img" class="img-fluid w-100" alt="slider-car" />
+                    </div> -->
+                    <div>
+                      <img :src="car.images[0]" class="img-fluid w-100" alt="slider-car" />
+                    </div>
                   </div>
                   <div class="slider-nav">
-                    <div class="thumb-slide">
+                    <div class="thumb-slide" v-for="img in car.images">
                       <!-- FIXME: loop cars here -->
-                      <img :src="car.img" class="img-fluid" alt="small-car" />
+                      <img :src="img" class="img-fluid" alt="small-car" />
                     </div>
                   </div>
                 </div>
@@ -39,19 +41,18 @@
                 <h3 class="sidebar-title">Refine Your Search</h3>
                 <div class="s-border"></div>
                 <div class="m-border"></div>
-                <ul v-for="(item, index) in car.specifications" :key="index">
+                <ul>
                   <li><span>Make</span>{{ car.make }}</li>
                   <li><span>Model</span>{{ car.model }}</li>
-                  <li><span>Body Style</span>{{ car.bodyStyle }}</li>
-                  <li><span>Year</span>{{ item.year }}</li>
-                  <li><span>Condition</span>{{ car.condition }}</li>
-                  <li><span>Mileage</span>{{ car.mileage }}</li>
-                  <li><span>Interior Color</span>{{ car.interiorColor }}</li>
-                  <li><span>Transmission</span>{{ item.transmission }}</li>
-                  <li><span>Engine</span>{{ car.engine }}</li>
-                  <li><span>No. of Gears:</span>{{ car.gears }}</li>
-                  <li><span>Location</span>Toronto</li>
-                  <li><span>Fuel Type</span>{{ item.fuelType }}</li>
+                  <li><span>Body Style</span>{{ car.specifications.bodyStyle }}</li>
+                  <li><span>Year</span>{{ car.specifications.year }}</li>
+                  <li><span>Condition</span>{{ car.specifications.condition }}</li>
+                  <li><span>Mileage</span>{{ car.specifications.mileage }}</li>
+                  <li><span>Transmission</span>{{ car.specifications.transmission }}</li>
+                  <li><span>Engine</span>{{ car.specifications.engine }}</li>
+                  <li><span>No. of Gears:</span>{{ car.specifications.gears }}</li>
+                  <li><span>Location</span>{{car.specifications.location}}</li>
+                  <li><span>Fuel Type</span>{{ car.specifications.fuelType }}</li>
                 </ul>
               </div>
               <!-- Tabbing box start -->
@@ -106,8 +107,7 @@
                       <div class="accordion-item">
                         <div class="car-description mb-50">
                           <h3 class="heading-2">Description</h3>
-                          <p>
-                            {{ car.description }}
+                          <p v-html="car.description">
                           </p>
                         </div>
                       </div>
@@ -134,30 +134,29 @@
                       <div class="accordion-item">
                         <div class="car-amenities mb-30">
                           <h3 class="heading-2">Specifications</h3>
-                          <div class="row" v-for="(item, index) in car.specifications" :key="index">
+                          <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                               <ul class="amenities">
-                                <li><i class="fa fa-check"></i>Top Speed: {{ item.topSpeed }}</li>
-                                <li><i class="fa fa-check"></i>Fuel Type: {{ item.fuelType }}</li>
-                                <li><i class="fa fa-check"></i>Mileage: {{ car.mileage }}</li>
-                                <li><i class="fa fa-check"></i>Engine: {{ car.engine }}</li>
-                                <li><i class="fa fa-check"></i>Gear: {{ car.gears }}</li>
+                                <li><i class="fa fa-check"></i>Top Speed: {{ car.specifications.topSpeed }}</li>
+                                <li><i class="fa fa-check"></i>Fuel Type: {{ car.specifications.fuelType }}</li>
+                                <li><i class="fa fa-check"></i>Mileage: {{ car.specifications.mileage }}</li>
+                                <li><i class="fa fa-check"></i>Engine: {{ car.specifications.engine }}</li>
+                                <li><i class="fa fa-check"></i>Gear: {{ car.specifications.gears }}</li>
                               </ul>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                               <ul class="amenities">
-                                <li><i class="fa fa-check"></i>Drive Train: {{ item.driveTrain }}</li>
-                                <li><i class="fa fa-check"></i>Body Style: {{ item.driveTrain }}</li>
-                                <li><i class="fa fa-check"></i>Year:{{ item.year }}</li>
-                                <li><i class="fa fa-check"></i>Fuel Type: {{ item.fuelType }}</li>
-                                <li><i class="fa fa-check"></i>Interior Color: {{ car.interiorColor }}</li>
+                                <li><i class="fa fa-check"></i>Drive Train: {{ car.specifications.driveTrain }}</li>
+                                <li><i class="fa fa-check"></i>Body Style: {{ car.specifications.bodyStyle }}</li>
+                                <li><i class="fa fa-check"></i>Year:{{ car.specifications.year }}</li>
+                                <li><i class="fa fa-check"></i>Fuel Type: {{ car.specifications.fuelType }}</li>
                               </ul>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                               <ul class="amenities">
-                                <li><i class="fa fa-check"></i>Doors: {{ item.doors }}</li>
-                                <li><i class="fa fa-check"></i>Horse Power: {{ item.horsePower }}</li>
-                                <li><i class="fa fa-check"></i>Location: {{ item.location }}</li>
+                                <li><i class="fa fa-check"></i>Doors: {{ car.specifications.doors }}</li>
+                                <li><i class="fa fa-check"></i>Horse Power: {{ car.specifications.horsePower }}</li>
+                                <li><i class="fa fa-check"></i>Location: {{ car.specifications.location }}</li>
                               </ul>
                             </div>
                           </div>
@@ -214,19 +213,18 @@
                 <h3 class="sidebar-title">Refine Your Search</h3>
                 <div class="s-border"></div>
                 <div class="m-border"></div>
-                <ul v-for="(item, index) in car.specifications" :key="index">
+                <ul>
                   <li>{<span>Make</span>{{ car.make }}</li>
                   <li><span>Model</span>{{ car.model }}</li>
                   <li><span>Body Style</span>{{ car.bodyStyle }}</li>
-                  <li><span>Year</span>{{ item.year }}</li>
+                  <li><span>Year</span>{{ car.specifications.year }}</li>
                   <li><span>Condition</span>{{ car.condition }}</li>
                   <li><span>Mileage</span>{{ car.mileage }}</li>
-                  <li><span>Interior Color</span>{{ car.interiorColor }}</li>
-                  <li><span>Transmission</span>{{ item.transmission }}</li>
+                  <li><span>Transmission</span>{{ car.specifications.transmission }}</li>
                   <li><span>Engine</span>{{ car.engine }}</li>
                   <li><span>No. of Gears:</span>{{ car.gears }}</li>
-                  <li><span>Location</span>Toronto</li>
-                  <li><span>Fuel Type</span>{{ item.fuelType }}</li>
+                  <li><span>Location</span>{{car.specifications.location}}</li>
+                  <li><span>Fuel Type</span>{{ car.specifications.fuelType }}</li>
                 </ul>
               </div>
               <!-- Question start -->
