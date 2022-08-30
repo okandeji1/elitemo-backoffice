@@ -14,21 +14,13 @@
           </div>
           <div class="col-xl-7 col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="about-text">
-              <h3>Welcome to Elitemo Car</h3>
+              <h3>Who We Are</h3>
               <P
-                >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has of type and
-                scrambled it to make a type specimen book. It has</P
+                >Elitemo is an online car marketplace committed to becoming the most trusted marketplace on the web. We tirelessly work towards these
+                goals by offering a superior experience, creating transparency for everyone, providing rapid delivery and outstanding customer
+                service. We offer a trusted, reliable and cost-effective online marketplace for the widest range of quality vehicles in Nigeria;
+                partnering with indigenous manufacturing companies and top dealers.</P
               >
-              <p class="mb-0">
-                electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                containing Lorem
-                <span class="d-none-1200"
-                  >Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.But also
-                  the leap into electronic typesetting ersions of Lorem Ipsum.But also the leap into electronic typesetting into electronic
-                  typesetting typesetting into</span
-                >
-              </p>
             </div>
           </div>
         </div>
@@ -39,9 +31,11 @@
     <div class="service-section content-area-2">
       <div class="container">
         <!-- Main title -->
-        <div class="main-title text-center">
-          <h1>We Are The Best</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+        <div class="about-text">
+          <h3>Our Story</h3>
+          <p>The founder Ojo Oluwafemi started this when he saw the challenges, disappointments and stress his colleagues and friends go through to buy a car and transport it to their location and also how they were being treated by car dealers in the open market space</p>
+          <p>After considering all these ugly experiences,he set out to solve the challenges that Nigerians and Africans face at large in the  car marketplace. Hence, Elitemo Cars was born to contribute our own quota to the service of humanity.</p>
+          <p>Our goal as a company is to create a community of serious buyers and trust worthy sellers while providing a excellent atmosphere for communicating and adds value by giving options that will make things easier and stress free.</p>
         </div>
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-12">

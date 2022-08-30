@@ -10,7 +10,7 @@
 </template>
 <script lang="ts">
 import { mapGetters, mapActions } from 'vuex';
-const paragraph = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem distinctio quod, adipisci id rem, alias laudantium quae beatae dolorum delectus impedit! Expedita quas explicabo nam reprehenderit voluptas facere rerum culpa.';
+const paragraph = 'We sincerely appreciate your visit and as we want you to have a totally stress free experience with elitemo cars,we request that you reach out to us through our friendly customer support team anytime for further enquiries.';
 export default {
   layout: 'site',
   middleware: 'guest',

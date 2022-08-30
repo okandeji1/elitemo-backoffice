@@ -2,9 +2,10 @@
   <div class="contact-1 content-area-20">
     <div class="container">
       <!-- Main title -->
-      <div class="main-title text-center">
-        <h1>{{header}}</h1>
+      <div class="about-text">
+        <h3>{{header}}</h3>
         <p>{{paragraph}}</p>
+        <p>Elitemo support team is available always by email,chat and phone call.</p>
       </div>
       <div class="row g-0 contact-innner">
         <div class="col-lg-7 col-md-12">

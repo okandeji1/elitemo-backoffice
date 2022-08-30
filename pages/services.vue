@@ -20,7 +20,7 @@
               <div class="detail">
                 <h3><a href="services-2.html">Free Support</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt Lorem ipsum dolor sit amet</p>
-                <a href="services.html" class="read-more">Read more...</a>
+                <a href="#" class="read-more">Read more...</a>
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@
               <div class="detail">
                 <h3><a href="services-2.html">Super Fast</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt Lorem ipsum dolor sit amet</p>
-                <a href="services.html" class="read-more">Read more...</a>
+                <a href="#" class="read-more">Read more...</a>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@
               <div class="detail">
                 <h3><a href="services-2.html">Repairing</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt Lorem ipsum dolor sit amet</p>
-                <a href="services.html" class="read-more">Read more...</a>
+                <a href="#" class="read-more">Read more...</a>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@
               <div class="detail">
                 <h3><a href="services-2.html">AIR conditioning</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt Lorem ipsum dolor sit amet</p>
-                <a href="services.html" class="read-more">Read more...</a>
+                <a href="#" class="read-more">Read more...</a>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@
               <div class="detail">
                 <h3><a href="services-2.html">Oil Change</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt Lorem ipsum dolor sit amet</p>
-                <a href="services.html" class="read-more">Read more...</a>
+                <a href="#" class="read-more">Read more...</a>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@
               <div class="detail">
                 <h3><a href="services-2.html">Engine Repair</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt Lorem ipsum dolor sit amet</p>
-                <a href="services.html" class="read-more">Read more...</a>
+                <a href="#" class="read-more">Read more...</a>
               </div>
             </div>
           </div>
@@ -92,7 +92,7 @@
               <div class="detail">
                 <h3><a href="services-2.html">Dealership</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt Lorem ipsum dolor sit amet</p>
-                <a href="services.html" class="read-more">Read more...</a>
+                <a href="#" class="read-more">Read more...</a>
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@
               <div class="detail">
                 <h3><a href="services-2.html">Security</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt Lorem ipsum dolor sit amet</p>
-                <a href="services.html" class="read-more">Read more...</a>
+                <a href="#" class="read-more">Read more...</a>
               </div>
             </div>
           </div>

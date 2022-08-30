@@ -181,6 +181,29 @@ const tenantUserLinks = [
     ],
   },
   {
+    id: 5,
+    title: 'Reports',
+    collapseIcon: 'profit-report',
+    icon: 'arrow',
+
+    isOpen: true,
+
+    subLinks: [
+      {
+        id: 1,
+        title: 'Sales',
+        icon: 'chart',
+        link: '/user/reports/sales',
+      },
+      // {
+      //   id: 2,
+      //   title: 'Activity Log',
+      //   icon: 'chart',
+      //   link: '/user/reports/activity-log',
+      // },
+    ],
+  },
+  {
     id: 4,
     title: 'My Network',
     collapseIcon: 'hierarchical-structure',
@@ -218,29 +241,6 @@ const tenantUserLinks = [
         icon: 'password',
         link: '/user/profile/change-password',
       },
-    ],
-  },
-  {
-    id: 5,
-    title: 'Reports',
-    collapseIcon: 'profit-report',
-    icon: 'arrow',
-
-    isOpen: true,
-
-    subLinks: [
-      {
-        id: 1,
-        title: 'Sales',
-        icon: 'chart',
-        link: '/user/reports/sales',
-      },
-      // {
-      //   id: 2,
-      //   title: 'Activity Log',
-      //   icon: 'chart',
-      //   link: '/user/reports/activity-log',
-      // },
     ],
   },
   {

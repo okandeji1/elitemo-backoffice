@@ -2,17 +2,26 @@ import { getQuery, notify, states } from '../utils/utils';
 
 export const state = () => ({
   transactions: {},
+  users: [],
 });
 
 export const getters = {
   getTransactions(state) {
     return state.transactions;
   },
+
+  getUsers(state) {
+    return state.users;
+  },
 };
 
 export const mutations = {
   setTransactions(state, value) {
     return (state.transactions = value);
+  },
+
+  setUsers(state, value) {
+    return (state.users = value);
   },
 };
 
@@ -24,7 +33,12 @@ export const actions = {
       if (res.status) {
         return res;
       }
-    } catch (error) {}
+    } catch (error) {
+      notify({
+        type: 'error',
+        message: error.response.data.message,
+      });
+    }
   },
 
   // Login or register
@@ -61,9 +75,9 @@ export const actions = {
         });
       }
     } catch (error) {
-      return notify({
+      notify({
         type: 'error',
-        message: 'Error! Request Failed. Please contact support',
+        message: error.response.data.message,
       });
     }
   },
@@ -119,9 +133,29 @@ export const actions = {
       });
       return this.$router.replace('/pool/register');
     } catch (error) {
-      return notify({
+      notify({
         type: 'error',
-        message: 'Error! Internal server error',
+        message: error.response.data.message,
+      });
+    }
+  },
+
+  async getUsersApi({ commit }, payload) {
+    try {
+      let url = '/api/v1/users?';
+      for (const [key, value] of Object.entries(payload.query)) {
+        url += `&${key}=${value}`;
+      }
+      const res = await this.$axios.$get(url);
+      if (res.status)
+        return this.commit(
+          'user/setUsers',
+          res.data,
+        );
+    } catch (error) {
+      notify({
+        type: 'error',
+        message: error.response.data.message,
       });
     }
   },

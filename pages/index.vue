@@ -10,7 +10,7 @@
               <div class="typing">
                 <h2>Find your Dream Car</h2>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+              <p>Our job is to help you buy a car that is quality guaranteed.</p>
               <a href="#" class="btn-8">
                 <span>Get Started Now</span>
               </a>
@@ -22,7 +22,7 @@
               <div class="typing">
                 <h2>Welcome to Elitemo</h2>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+              <p>Our job is to help you buy a car that is quality guaranteed.</p>
               <a href="#" class="btn-8">
                 <span>Get Started Now</span>
               </a>
@@ -34,7 +34,7 @@
               <div class="typing">
                 <h2>Best place for sell car!</h2>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+              <p>Our job is to help you buy a car that is quality guaranteed.</p>
               <a href="#" class="btn-8">
                 <span>Get Started Now</span>
               </a>
@@ -199,9 +199,9 @@
               <div class="icon">
                 <i class="flaticon-shield"></i>
               </div>
-              <div class="detail">
-                <h5><a href="#">Highly Secured</a></h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus.</p>
+              <div class="detail h-48">
+                <h5><a href="#">Excellent quality and Vehicle reliability</a></h5>
+                <p>Elitemo cars are strictly inspected for qualities. No mechanical faults for your peace of mind.</p>
               </div>
             </div>
           </div>
@@ -211,9 +211,9 @@
               <div class="icon">
                 <i class="flaticon-deal"></i>
               </div>
-              <div class="detail">
-                <h5><a href="#">Trusted Agents</a></h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus.</p>
+              <div class="detail h-48">
+                <h5><a href="#">Awesome Customer Experience</a></h5>
+                <p>We are committed to providing you with an amazing experience for every moment.</p>
               </div>
             </div>
           </div>
@@ -223,9 +223,9 @@
               <div class="icon">
                 <i class="flaticon-money"></i>
               </div>
-              <div class="detail">
-                <h5><a href="#">Get an Offer</a></h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus.</p>
+              <div class="detail h-48">
+                <h5><a href="#">Our Vision</a></h5>
+                <p>To be a leading auto company providing gold standard customer services in every market we represent.</p>
               </div>
             </div>
           </div>
@@ -235,9 +235,9 @@
               <div class="icon">
                 <i class="flaticon-support-2"></i>
               </div>
-              <div class="detail">
+              <div class="detail h-48">
                 <h5><a href="#">Free Support</a></h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus.</p>
+                <p>We are available for further enquiries.</p>
               </div>
             </div>
           </div>
