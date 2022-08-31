@@ -20,6 +20,7 @@ export const state = () => ({
   siteFormat: 'FIXED_WIDTH',
   toggleMenu: false,
   addDealer: false,
+  addPost: false,
 });
 
 export const getters = {
@@ -54,6 +55,10 @@ export const getters = {
   addDealerDrawer(state){
     return state.addDealer;
   },
+
+  addPostDrawer(state){
+    return state.addPost;
+  },
 };
 
 export const mutations = {
@@ -76,6 +81,10 @@ export const mutations = {
 
   toggleAddDealerDrawer(state, value) {
     return (state.addDealer = value);
+  },
+
+  toggleAddPostDrawer(state, value) {
+    return (state.addPost = value);
   },
 };
 

@@ -375,10 +375,10 @@
           class="featured-slider row slide-box-btn slider"
           data-slick='{"slidesToShow": 3, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'
         >
-          <div class="slide slide-box" v-for="(item, index) in blogs" :key="index">
+          <div class="slide slide-box" v-for="(item, index) in posts" :key="index">
             <div class="blog-3">
               <div class="blog-image">
-                <img :src="item.img" alt="blog" class="img-fluid bp" />
+                <img :src="item.images[0]" alt="blog" class="img-fluid bp" />
                 <div class="date-box-2 db-2">{{item.date}}</div>
                 <div class="post-meta clearfix">
                   <span
@@ -394,9 +394,9 @@
               </div>
               <div class="detail">
                 <h3>
-                  <button class="b-btn" @click="viewBlogDetails(item)">{{item.title}}</button>
+                  <button class="b-btn" @click="viewBlogDetails(item)">{{item.header}}</button>
                 </h3>
-                <p class="truncate ...">{{item.description}}</p>
+                <p class="truncate ..." v-html="item.description.substring(0, 100) + '...'"></p>
                 <button class="b-btn" @click="viewBlogDetails(item)">Rea more...!</button>
               </div>
             </div>
@@ -543,7 +543,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      blogs: 'blog/getBlogs',
+      posts: 'blog/getPosts',
       featuredCars: 'car/getFeaturedCars',
       newCars: 'car/getNewCars',
     }),
@@ -564,7 +564,7 @@ export default {
     },
 
     viewBlogDetails(data) {
-      this.setBlog(data);
+      this.setPost(data);
 
       this.$router.push({ path: '/blog-details' });
     },
@@ -576,18 +576,20 @@ export default {
 
     ...mapMutations({
       setCar: 'car/setCar',
-      setBlog: 'blog/setBlog',
+      setPost: 'blog/setPost',
     }),
 
     ...mapActions({
       getDealerApi: 'dealer/getDealerApi',
       getCarsApi: 'car/getCarsApi',
+      getPostsApi: 'blog/getPostsApi'
     }),
   },
 
   mounted() {
     this.$nextTick(() => {
       this.getDealerApi({query: {}});
+      this.getPostsApi({query: {}})
       this.getCarsApi({query: {limit: 6}});
     });
   },

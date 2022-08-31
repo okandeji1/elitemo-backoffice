@@ -11,13 +11,13 @@
             <!-- Blog 1 start -->
             <div class="blog-1 blog-big mb-50">
               <div class="blog-photo">
-                <img :src="blog.img" alt="blog-img" class="img-fluid w-100" />
+                <img :src="post.images[0]" alt="blog-img" class="img-fluid w-100" />
               </div>
               <div class="detail">
                 <h3>
-                  <a href="#">{{blog.title}}</a>
+                  <a href="#">{{post.header}}</a>
                 </h3>
-                <p>{{blog.description}}</p>
+                <p v-html="post.description"></p>
                 <br />
                 <div class="row clearfix">
                   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -59,16 +59,16 @@
                 <h3 class="sidebar-title">Recent Posts</h3>
                 <div class="s-border"></div>
                 <div class="m-border"></div>
-                <div class="d-flex mb-4 recent-posts-box" v-for="(item, index) in blogs" :key="index">
-                  <a href="#">
-                    <img :src="item.img" class="flex-shrink-0 me-3" alt="photo" />
+                <div class="d-flex mb-4 recent-posts-box" v-for="(item, index) in posts" :key="index">
+                  <a href="">
+                    <img :src="item.images[0]" class="flex-shrink-0 me-3" alt="photo" />
                   </a>
                   <div class="align-self-center">
                     <h5>
-                      <span @click="viewBlogDetails(item)">{{item.title}}</span>
+                      <span class="cursor-pointer" @click="viewBlogDetails(item)">{{item.header}}</span>
                     </h5>
                     <div class="listing-post-meta">
-                      $345,00 | <a href="#"><i class="fa fa-calendar"></i> {{item.date}}</a>
+                      Admin | <a href="#"><i class="fa fa-calendar"></i> {{moment(item.createdAt).format('Do MMM')}}</a>
                     </div>
                   </div>
                 </div>
@@ -122,36 +122,44 @@
 </template>
 <script lang="ts">
 import { mapGetters, mapActions, mapMutations } from 'vuex';
+import moment from 'moment';
+
 
 export default {
   layout: 'site',
   middleware: 'guest',
   computed: {
     ...mapGetters({
-        blog: 'blog/getBlog',
-        blogs: 'blog/getBlogs',
+        post: 'blog/getPost',
+        posts: 'blog/getPosts',
     }),
   },
 
   data() {
-    return {};
+    return {
+      moment,
+    };
   },
 
   methods: {
     viewBlogDetails(data) {
-      this.setBlog(data);
+      this.setPost(data);
 
       this.$router.push({ path: '/blog-details' });
     },
 
     ...mapMutations({
-      setBlog: 'blog/setBlog',
+      setPost: 'blog/setPost',
     }),
-    ...mapActions({}),
+    ...mapActions({
+      getPostsApi: 'blog/getPostsApi'
+    }),
   },
 
   mounted() {
-    this.$nextTick(() => {});
+    this.$nextTick(() => {
+      this.getPostsApi({query: {limit: 10}})
+    });
   },
 };
 </script>

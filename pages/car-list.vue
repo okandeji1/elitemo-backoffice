@@ -20,18 +20,13 @@
               </div>
             </div>
             <!-- Car box 2 start -->
-            <div class="car-box-2" v-for="(item, index) in featuredCars" :key="index">
+            <div class="car-box-2" v-for="(item, index) in cars" :key="index">
               <div class="row g-0">
                 <div class="col-lg-5 col-md-5">
                   <div class="car-thumbnail">
                     <span class="car-img">
                       <div class="for">{{ item.type }}</div>
-                      <div class="price-box">
-                        <span class="del"><del>$950.00</del></span>
-                        <br />
-                        <span>{{ item.price }}</span>
-                      </div>
-                      <img class="d-block w-100" :src="item.img" alt="car" />
+                      <img class="d-block w-100" :src="item.images[0]" alt="car" />
                     </span>
                   </div>
                 </div>
@@ -47,13 +42,13 @@
                         <span>Sports</span>
                       </li>
                     </ul>
-                    <ul class="facilities-list clearfix" v-for="(spec, index) in item.specifications" :key="index">
-                      <li><i class="flaticon-fuel"></i> {{ spec.fuelType }}</li>
-                      <li><i class="flaticon-way"></i> {{ spec.speed }}</li>
-                      <li><i class="flaticon-manual-transmission"></i> {{ spec.transmission }}</li>
-                      <li><i class="flaticon-car"></i> {{ spec.carType }}</li>
-                      <li><i class="flaticon-gear"></i> {{ spec.gear }}</li>
-                      <li><i class="flaticon-calendar-1"></i> {{ spec.year }}</li>
+                    <ul class="facilities-list clearfix">
+                      <li><i class="flaticon-fuel"></i> {{ item.specifications.fuelType }}</li>
+                      <li><i class="flaticon-way"></i> {{ item.specifications.speed }}</li>
+                      <li><i class="flaticon-manual-transmission"></i> {{ item.specifications.transmission }}</li>
+                      <li><i class="flaticon-car"></i> {{ item.brand }}</li>
+                      <li><i class="flaticon-gear"></i> {{ item.specifications.gears }}</li>
+                      <li><i class="flaticon-calendar-1"></i> {{ item.specifications.year }}</li>
                     </ul>
                   </div>
                 </div>
@@ -85,7 +80,7 @@
                 <h3 class="sidebar-title">Search Cars</h3>
                 <div class="s-border"></div>
                 <div class="m-border"></div>
-                <form method="GET">
+                <form>
                   <div class="form-group">
                     <select class="selectpicker search-fields" name="brand">
                       <option>Brand</option>
@@ -99,12 +94,7 @@
                   <div class="form-group">
                     <select class="selectpicker search-fields" name="location">
                       <option>Location</option>
-                      <option>United States</option>
-                      <option>United Kingdom</option>
-                      <option>American Samoa</option>
-                      <option>Belgium</option>
-                      <option>Cameroon</option>
-                      <option>Canada</option>
+                      <option>Lagos</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -136,19 +126,7 @@
                       <option>Tiptronic</option>
                     </select>
                   </div>
-                  <div class="range-slider clearfix">
-                    <label>Price</label>
-                    <div
-                      data-min="0"
-                      data-max="150000"
-                      data-min-name="min_price"
-                      data-max-name="max_price"
-                      data-unit="USD"
-                      class="range-slider-ui ui-slider"
-                      aria-disabled="false"
-                    ></div>
-                    <div class="clearfix"></div>
-                  </div>
+                  
                   <a class="show-more-options" data-toggle="collapse" data-target="#options-content">
                     <i class="fa fa-plus-circle"></i> Other Features
                   </a>
@@ -179,7 +157,7 @@
                     <br />
                   </div>
                   <div class="form-group mb-0">
-                    <button class="search-button btn">Search</button>
+                    <button class="search-button btn" disabled>Search</button>
                   </div>
                 </form>
               </div>
@@ -188,16 +166,16 @@
                 <h3 class="sidebar-title">Recent Posts</h3>
                 <div class="s-border"></div>
                 <div class="m-border"></div>
-                <div class="d-flex mb-4 recent-posts-box" v-for="(item, index) in blogs" :key="index">
+                <div class="d-flex mb-4 recent-posts-box" v-for="(item, index) in posts" :key="index">
                   <a href="#">
-                    <img :src="item.img" class="flex-shrink-0 me-3" alt="i" />
+                    <img :src="item.images[0]" class="flex-shrink-0 me-3" alt="i" />
                   </a>
                   <div class="align-self-center">
                     <h5>
-                      <span @click="viewBlogDetails(item)">{{ item.title }}</span>
+                      <span @click="viewBlogDetails(item)">{{ item.header }}</span>
                     </h5>
                     <div class="listing-post-meta">
-                      $345,00 | <a href="#"><i class="fa fa-calendar"></i> J{{ item.date }}</a>
+                      Admin | <a href="#"><i class="fa fa-calendar"></i> {{ moment(item.createdAt).format('Do MMM') }}</a>
                     </div>
                   </div>
                 </div>
@@ -207,7 +185,7 @@
                 <h3 class="sidebar-title">Category</h3>
                 <div class="s-border"></div>
                 <div class="m-border"></div>
-                <ul class="list-unstyled list-cat">
+                <!-- <ul class="list-unstyled list-cat">
                   <li>
                     <a href="#">Luxury <span>(45)</span></a>
                   </li>
@@ -223,7 +201,7 @@
                   <li>
                     <a href="#">Wagon <span>(9) </span></a>
                   </li>
-                </ul>
+                </ul> -->
               </div>
             </div>
           </div>
@@ -235,280 +213,22 @@
 </template>
 <script lang="ts">
 import { mapGetters, mapActions, mapMutations } from 'vuex';
-const featuredCars = [
-  {
-    img: 'img/car/car-1.jpg',
-    make: 'Lamborghini',
-    price: '$1050.00',
-    model: '2.2L XLS 4x2 MT',
-    type: 'For Sale',
-    bodyStyle: 'Covertible',
-    condition: 'Brand New',
-    mileage: '34,000 mi',
-    interiorColor: 'Dark Grey',
-    engine: '3.4L Mid-Engine V6',
-    gears: '5',
-    specifications: [
-      {
-        fuelType: 'Petrol',
-        way: '4,000 km',
-        transmission: 'Manual',
-        car: 'Sport',
-        gear: 'Blue',
-        year: '2022',
-        horsePower: '310',
-        topSpeed: '270',
-        driveTrain: 'Front Wheel',
-        doors: '4',
-        location: 'Lagos, Nigeria',
-        bodyStyle: 'Sedan',
-      },
-    ],
-    features: [
-      'Cruise Control',
-      'Airbags',
-      'Air Conditioning',
-      'Alarm System',
-      'Audio Interface',
-      'CDR Audio',
-      'Seat Heating',
-      'Park Assist',
-      'Automatic Climate Control',
-      'Auto Start/Stop',
-    ],
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-  },
-  {
-    img: 'img/car/car-2.jpg',
-    make: 'Ferrari Red Car',
-    price: '$780.00',
-    model: '2.2L XLS 4x2 MT',
-    type: 'Featured',
-    bodyStyle: 'Covertible',
-    condition: 'Brand New',
-    mileage: '34,000 mi',
-    interiorColor: 'Dark Grey',
-    engine: '3.4L Mid-Engine V6',
-    gears: '5',
-    specifications: [
-      {
-        fuelType: 'Petrol',
-        speed: '4,000 km',
-        transmission: 'Manual',
-        carType: 'Sport',
-        gear: 'Blue',
-        year: '2022',
-        horsePower: '310',
-        topSpeed: '270',
-        driveTrain: 'Front Wheel',
-        doors: '4',
-        location: 'Lagos, Nigeria',
-        bodyStyle: 'Sedan',
-      },
-    ],
-    features: [
-      'Cruise Control',
-      'Airbags',
-      'Air Conditioning',
-      'Alarm System',
-      'Audio Interface',
-      'CDR Audio',
-      'Seat Heating',
-      'Park Assist',
-      'Automatic Climate Control',
-      'Auto Start/Stop',
-    ],
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-  },
-  {
-    img: 'img/car/car-3.jpg',
-    make: 'Bmw e46 m3 Diski Serie',
-    price: '$$940.00',
-    model: '2.2L XLS 4x2 MT',
-    type: 'For Rent',
-    bodyStyle: 'Covertible',
-    condition: 'Brand New',
-    mileage: '34,000 mi',
-    interiorColor: 'Dark Grey',
-    engine: '3.4L Mid-Engine V6',
-    gears: '5',
-    specifications: [
-      {
-        fuelType: 'Petrol',
-        way: '4,000 km',
-        transmission: 'Manual',
-        car: 'Sport',
-        gear: 'Blue',
-        year: '2022',
-        horsePower: '310',
-        topSpeed: '270',
-        driveTrain: 'Front Wheel',
-        doors: '4',
-        location: 'Lagos, Nigeria',
-        bodyStyle: 'Sedan',
-      },
-    ],
-    features: [
-      'Cruise Control',
-      'Airbags',
-      'Air Conditioning',
-      'Alarm System',
-      'Audio Interface',
-      'CDR Audio',
-      'Seat Heating',
-      'Park Assist',
-      'Automatic Climate Control',
-      'Auto Start/Stop',
-    ],
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-  },
-  {
-    img: 'img/car/car-4.jpg',
-    make: 'Volkswagen Scirocco',
-    price: '$1050.00',
-    model: '2.2L XLS 4x2 MT',
-    type: 'Featured',
-    bodyStyle: 'Sedan',
-    condition: 'Brand New',
-    mileage: '34,000 mi',
-    interiorColor: 'Dark Grey',
-    engine: '3.4L Mid-Engine V6',
-    gears: '5',
-    specifications: [
-      {
-        fuelType: 'Petrol',
-        way: '4,000 km',
-        transmission: 'Manual',
-        car: 'Sport',
-        gear: 'Blue',
-        year: '2022',
-        horsePower: '310',
-        topSpeed: '270',
-        driveTrain: 'Front Wheel',
-        doors: '4',
-        location: 'Lagos, Nigeria',
-        bodyStyle: 'Sedan',
-      },
-    ],
-    features: [
-      'Cruise Control',
-      'Airbags',
-      'Air Conditioning',
-      'Alarm System',
-      'Audio Interface',
-      'CDR Audio',
-      'Seat Heating',
-      'Park Assist',
-      'Automatic Climate Control',
-      'Auto Start/Stop',
-    ],
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-  },
-  {
-    img: 'img/car/car-5.jpg',
-    make: 'Porsche Cayen Last',
-    price: '$780.00',
-    model: '2.2L XLS 4x2 MT',
-    type: 'For Sale',
-    bodyStyle: 'Covertible',
-    condition: 'Brand New',
-    mileage: '34,000 mi',
-    interiorColor: 'Dark Grey',
-    engine: '3.4L Mid-Engine V6',
-    gears: '5',
-    specifications: [
-      {
-        fuelType: 'Petrol',
-        way: '4,000 km',
-        transmission: 'Manual',
-        car: 'Sport',
-        gear: 'Blue',
-        year: '2022',
-        horsePower: '310',
-        topSpeed: '270',
-        driveTrain: 'Front Wheel',
-        doors: '4',
-        location: 'Lagos, Nigeria',
-        bodyStyle: 'Sedan',
-      },
-    ],
-    features: [
-      'Cruise Control',
-      'Airbags',
-      'Air Conditioning',
-      'Alarm System',
-      'Audio Interface',
-      'CDR Audio',
-      'Seat Heating',
-      'Park Assist',
-      'Automatic Climate Control',
-      'Auto Start/Stop',
-    ],
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-  },
-  {
-    img: 'img/car/car-6.jpg',
-    make: 'Lexus GS F',
-    price: '$940.00',
-    model: '2.2L XLS 4x2 MT',
-    type: 'Featured',
-    bodyStyle: 'Covertible',
-    condition: 'Brand New',
-    mileage: '34,000 mi',
-    interiorColor: 'Dark Grey',
-    engine: '3.4L Mid-Engine V6',
-    gears: '5',
-    specifications: [
-      {
-        fuelType: 'Petrol',
-        way: '4,000 km',
-        transmission: 'Manual',
-        car: 'Sport',
-        gear: 'Blue',
-        year: '2022',
-        horsePower: '310',
-        topSpeed: '270',
-        driveTrain: 'Front Wheel',
-        doors: '4',
-        location: 'Lagos, Nigeria',
-        bodyStyle: 'Sedan',
-      },
-    ],
-    features: [
-      'Cruise Control',
-      'Airbags',
-      'Air Conditioning',
-      'Alarm System',
-      'Audio Interface',
-      'CDR Audio',
-      'Seat Heating',
-      'Park Assist',
-      'Automatic Climate Control',
-      'Auto Start/Stop',
-    ],
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-  },
-];
+import moment from 'moment';
+
 
 export default {
   layout: 'site',
   middleware: 'guest',
   computed: {
     ...mapGetters({
-      blogs: 'blog/getBlogs',
-      // featuredCars: 'car/getFeaturedCars',
+      posts: 'blog/getPosts',
+      cars: 'car/getCars',
     }),
   },
 
   data() {
     return {
-      featuredCars,
+      moment,
     };
   },
 
@@ -520,21 +240,27 @@ export default {
     },
 
     viewBlogDetails(data) {
-      this.setBlog(data);
+      this.setPost(data);
 
       this.$router.push({ path: '/blog-details' });
     },
 
     ...mapMutations({
       setCar: 'car/setCar',
-      setBlog: 'blog/setBlog',
+      setPost: 'blog/setPost',
     }),
 
-    ...mapActions({}),
+    ...mapActions({
+      getCarsApi: 'car/getCarsApi',
+      getPostsApi: 'blog/getPostsApi',
+    }),
   },
 
   mounted() {
-    this.$nextTick(() => {});
+    this.$nextTick(() => {
+      this.getCarsApi({query: {}});
+      this.getPostsApi({query: {limit: 10}})
+    });
   },
 };
 </script>

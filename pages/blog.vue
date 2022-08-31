@@ -7,12 +7,12 @@
     <div class="blog-body content-area">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-md-6" v-for="(item, index) in blogs" :key="index">
+          <div class="col-lg-4 col-md-6" v-for="(item, index) in posts" :key="index">
             <div class="blog-1">
               <div class="blog-image">
-                <img :src="item.img" alt="blog-1" class="img-fluid bp" />
+                <img :src="item.images[0]" alt="blog-1" class="img-fluid bp" />
                 <div class="date-box">
-                  <span>{{ item.date }}</span>
+                  <span>{{ moment(item.createdAt).format('Do MMM') }}</span>
                 </div>
                 <div class="profile-user">
                   <img src="img/avatar/avatar-1.jpg" alt="user" />
@@ -22,20 +22,20 @@
                 <div class="post-meta clearfix">
                   <ul>
                     <li>
-                      <strong><a href="#">Maria Blank</a></strong>
+                      <strong><a href="/blog#">Admin</a></strong>
                     </li>
                     <li class="float-right">
-                      <a href="#"><i class="flaticon-comment"></i></a>17K
+                      <a href="/blog#"><i class="flaticon-comment"></i></a>17K
                     </li>
                     <li class="float-right">
-                      <a href="#"><i class="flaticon-calendar"></i></a>73k
+                      <a href="/blog#"><i class="flaticon-calendar"></i></a>73k
                     </li>
                   </ul>
                 </div>
                 <h4>
-                  <button class="font" @click="viewBlogDetails(item)">{{ item.title }}</button>
+                  <button class="font" @click="viewBlogDetails(item)">{{ item.header }}</button>
                 </h4>
-                <p class="truncate ...">{{ item.description }}</p>
+                <p class="truncate ..." v-html="item.description.substring(0, 100) + '...'"></p>
               </div>
             </div>
           </div>
@@ -65,36 +65,43 @@
 </template>
 <script lang="ts">
 import { mapGetters, mapActions, mapMutations } from 'vuex';
+import moment from 'moment';
 
 export default {
   layout: 'site',
   middleware: 'guest',
   computed: {
     ...mapGetters({
-      blogs: 'blog/getBlogs',
+      posts: 'blog/getPosts',
     }),
   },
 
   data() {
-    return {};
+    return {
+      moment,
+    };
   },
 
   methods: {
     viewBlogDetails(data) {
-      this.setBlog(data);
+      this.setPost(data);
 
       this.$router.push({ path: '/blog-details' });
     },
 
     ...mapMutations({
-      setBlog: 'blog/setBlog',
+      setPost: 'blog/setPost',
     }),
 
-    ...mapActions({}),
+    ...mapActions({
+      getPostsApi: 'blog/getPostsApi'
+    }),
   },
 
   mounted() {
-    this.$nextTick(() => {});
+    this.$nextTick(() => {
+      this.getPostsApi({query: {}})
+    });
   },
 };
 </script>

@@ -1,84 +1,61 @@
+import { notify } from '../utils/utils';
+
 export const state = () => ({
-    blogs: [
-        {
-          img: 'img/blog/blog-2.jpg',
-          title: 'Buying a Best Sports Car',
-          date: '14 Jan',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-        },
-        {
-          img: 'img/blog/blog-1.jpg',
-          title: 'elling Your New Cars?',
-          date: '27 Mar',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-        },
-        {
-          img: 'img/blog/blog-2.jpg',
-          title: 'Find Your Dream Car',
-          date: '09 Jun',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-        },
-        {
-          img: 'img/blog/blog-3.jpg',
-          title: 'Find Your Dream Car',
-          date: '08 Jul',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-        },
-        {
-          img: 'img/blog/blog-3.jpg',
-          title: 'Find Your Dream Car',
-          date: '08 Jul',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-        },
-        {
-          img: 'img/blog/blog-3.jpg',
-          title: 'Find Your Dream Car',
-          date: '08 Jul',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-        },
-        {
-          img: 'img/blog/blog-3.jpg',
-          title: 'Find Your Dream Car',
-          date: '08 Jul',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-        },
-        {
-          img: 'img/blog/blog-3.jpg',
-          title: 'Find Your Dream Car',
-          date: '08 Jul',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, e pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac, laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.',
-        },
-      ],
-    blog: {},
+    posts: [],
+    post: {},
   });
   
   export const getters = {
-    getBlogs(state) {
-      return state.blogs;
+    getPosts(state) {
+      return state.posts;
     },
-  
-    getBlog(state) {
-      return state.blog;
+
+    getPost(state) {
+      return state.post;
     },
   };
   
   export const mutations = {
-    setBlogs(state, value) {
-      return (state.blogs = value);
+    setPosts(state, value) {
+      return (state.posts = value);
     },
-  
-    setBlog(state, value) {
-        return state.blog = value;
-    },
+
+    setPost(state, value) {
+      return state.post = value;
+  },
   };
   
-  export const actions = {};
+  export const actions = {
+
+    async getPostsApi({ commit, state }, payload) {
+      try {
+        let url = '/api/v1/blogs?';
+        for (const [key, value] of Object.entries(payload.query)) {
+          url += `&${key}=${value}`;
+        }
+        const res = await this.$axios.$get(url);
+  
+        if (res.status) {
+          return this.commit('blog/setPosts', res.data);
+        }
+      } catch (error) {
+        notify({
+          type: 'error',
+          message: error.response.data.message,
+        });
+      }
+    },
+  
+    async addPostApi({ commit }, payload) {
+      try {
+        const res = await this.$axios.$post('/api/v1/blogs/add/post', payload);
+        return res;
+      } catch (error) {
+        notify({
+          type: 'error',
+          message: error.response.data.message,
+        });
+      }
+    },
+  };
   

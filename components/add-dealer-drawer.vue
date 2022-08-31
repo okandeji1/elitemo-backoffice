@@ -88,7 +88,8 @@
           zIndex: 5,
         }"
       >
-        <a-button size="large" class="w-full mt-4 text-white bg-primary-m-success" @click="addDealer" :loading="isLoading">Add Dealer</a-button>
+        <a-button size="large" class="w-full mt-4 text-white bg-primary-m-success" @click="addDealer"
+        :disabled="$v.anyError" :loading="isLoading">Add Dealer</a-button>
       </div>
       </div>
     </a-drawer>

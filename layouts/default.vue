@@ -148,32 +148,27 @@ import { mapGetters, mapMutations, mapActions } from 'vuex';
 
 const tenantUserLinks = [
   {
-    id: 1,
     title: 'Main',
     icon: 'arrow',
     collapseIcon: 'briefcase',
     isOpen: true,
     subLinks: [
       {
-        id: 1,
         title: 'Overview',
         icon: 'balance',
         link: '/user/overview',
       },
       {
-        id: 2,
         title: 'Dealers',
         icon: 'transaction-list',
         link: '/user/main/dealers',
       },
       {
-        id: 3,
         title: 'Cars',
         icon: 'transaction-list',
         link: '/user/main/cars',
       },
       {
-        id: 4,
         title: 'Transactions',
         icon: 'transaction-list',
         link: '/user/main/transactions',
@@ -181,7 +176,6 @@ const tenantUserLinks = [
     ],
   },
   {
-    id: 5,
     title: 'Reports',
     collapseIcon: 'profit-report',
     icon: 'arrow',
@@ -190,13 +184,11 @@ const tenantUserLinks = [
 
     subLinks: [
       {
-        id: 1,
         title: 'Sales',
         icon: 'chart',
         link: '/user/reports/sales',
       },
       // {
-      //   id: 2,
       //   title: 'Activity Log',
       //   icon: 'chart',
       //   link: '/user/reports/activity-log',
@@ -204,7 +196,21 @@ const tenantUserLinks = [
     ],
   },
   {
-    id: 4,
+    title: 'Blogs',
+    collapseIcon: 'profit-report',
+    icon: 'arrow',
+
+    isOpen: true,
+
+    subLinks: [
+      {
+        title: 'Blogs',
+        icon: 'chart',
+        link: '/user/blogs/posts',
+      },
+    ],
+  },
+  {
     title: 'My Network',
     collapseIcon: 'hierarchical-structure',
 
@@ -213,7 +219,6 @@ const tenantUserLinks = [
 
     subLinks: [
       {
-        id: 1,
         title: 'Users',
         icon: 'balance',
         link: '/user/network/users',
@@ -221,7 +226,6 @@ const tenantUserLinks = [
     ],
   },
   {
-    id: 3,
     title: 'Account Details',
     icon: 'arrow',
     collapseIcon: 'menu',
@@ -230,13 +234,11 @@ const tenantUserLinks = [
 
     subLinks: [
       {
-        id: 1,
         title: 'Change Personal Data',
         icon: 'profile',
         link: '/user/profile/edit-profile',
       },
       {
-        id: 2,
         title: 'Change Password',
         icon: 'password',
         link: '/user/profile/change-password',
@@ -244,7 +246,6 @@ const tenantUserLinks = [
     ],
   },
   {
-    id: 9,
     title: 'Settings',
     collapseIcon: 'black-settings-button',
     icon: 'arrow',
@@ -253,13 +254,11 @@ const tenantUserLinks = [
 
     subLinks: [
       {
-        id: 1,
         title: 'Configurations',
         icon: 'settings',
         link: '/user/settings/configurations',
       },
       {
-        id: 3,
         title: 'System',
         icon: 'settings',
         link: '/user/settings/system',
@@ -270,14 +269,12 @@ const tenantUserLinks = [
 
 const unAuthhUserLinks = [
   {
-    id: 1,
     title: 'My Account',
     icon: 'arrow',
     isOpen: true,
     collapseIcon: 'briefcase',
     subLinks: [
       {
-        id: 1,
         title: 'Overview',
         icon: 'balance',
         link: '/user/overview',
@@ -285,7 +282,6 @@ const unAuthhUserLinks = [
     ],
   },
   {
-    id: 9,
     title: 'Settings',
     collapseIcon: 'black-settings-button',
     icon: 'arrow',
@@ -294,7 +290,6 @@ const unAuthhUserLinks = [
 
     subLinks: [
       {
-        id: 3,
         title: 'System',
         icon: 'settings',
         link: '/user/settings/system',

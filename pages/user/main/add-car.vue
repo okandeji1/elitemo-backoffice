@@ -72,13 +72,6 @@
                   class="mt-1"
                 >
                 </a-input>
-                <!-- <a-upload @blur="$v.car.image.$touch()" size="large"
-                name="file"
-                :multiple="true"
-                @change="handleFileUpload"
-                class="mt-1">
-                <i class="fa fa-upload" aria-hidden="true"></i>
-                </a-upload> -->
                 <template v-if="$v.car.image.$error">
                   <small class="text-xs text-red-600" v-if="!$v.car.image.required">image is required</small>
                 </template>
@@ -168,7 +161,7 @@
 <script lang="ts">
 import { mapGetters, mapActions } from 'vuex';
 
-import { minLength, required } from 'vuelidate/lib/validators';
+import { minLength, maxLength, required } from 'vuelidate/lib/validators';
 import { message } from 'ant-design-vue';
 import { notify, cleanEmptyObj } from '../../../utils/utils';
 
@@ -305,7 +298,7 @@ export default {
         speed: { required },
         transmission: { required },
         gears: { required },
-        year: { required },
+        year: { required, minLength: minLength(4), maxLength: maxLength(4) },
         horsePower: { required },
         topSpeed: { required },
         driveTrain: { required },
@@ -402,27 +395,9 @@ export default {
       }
     },
 
-    // async handleFileUpload(e) {
-    //   const file = e.file;
-
-    //   const isValid = await this.beforeUpload(file);
-    //   console.log({isValid});
-
-    //   if (!isValid) {
-    //     console.log('invalid');
-    //     this.car.image = '';
-    //     return;
-    //   }
-
-    //   if (e.file.status === 'done') {
-    //     this.car.image = e.fileList;
-    //   }
-    //   console.log(this.car.image);
-
-    // },
-
     resetAgentForm() {
       this.car = this.createFreshDataObject();
+      this.car = this.createFreshSpecObject();
       this.$v.$reset();
     },
 
@@ -483,10 +458,10 @@ export default {
     ...mapActions({
       addCarApi: 'car/addCarApi',
     }),
-
-    mounted() {
-      this.responsiveCustomBar();
-    },
+  },
+  
+  mounted() {
+    this.responsiveCustomBar();
   },
 };
 </script>
