@@ -10,7 +10,7 @@
               <div class="typing">
                 <h2>Find your Dream Car</h2>
               </div>
-              <p>Our job is to help you buy a car that is quality guaranteed.</p>
+              <p>Our job is to help you buy a car that is a quality guaranteed.</p>
               <a href="#" class="btn-8">
                 <span>Get Started Now</span>
               </a>
