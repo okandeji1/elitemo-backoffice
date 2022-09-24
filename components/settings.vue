@@ -121,8 +121,6 @@
 <script lang="ts">
 import Vue from 'vue';
 import { mapGetters, mapMutations, mapActions } from 'vuex';
-import { io } from 'socket.io-client';
-import { notify } from '~/utils/utils';
 
 // const socket = ref();
 export default Vue.extend({

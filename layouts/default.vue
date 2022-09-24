@@ -359,7 +359,7 @@ export default {
 
   data() {
     return {
-      siteFormat: '100%',
+      siteFormat: 'FIXED_WIDTH',
       collapseSidebar: false,
       tenantUserLinks,
       unAuthhUserLinks,

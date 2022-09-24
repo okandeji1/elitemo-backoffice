@@ -361,6 +361,7 @@
     <!-- Our brand end -->
 
     <!-- Testimonial 3 start -->
+    <!-- FIXME: uncomment when we have clients -->
     <lazy-car-testimonial></lazy-car-testimonial>
     <!-- Testimonial 3 end -->
 

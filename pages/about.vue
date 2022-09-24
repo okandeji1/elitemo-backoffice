@@ -18,8 +18,9 @@
               <P
                 >Elitemo is an online car marketplace committed to becoming the most trusted marketplace on the web. We tirelessly work towards these
                 goals by offering a superior experience, creating transparency for everyone, providing rapid delivery and outstanding customer
-                service. We offer a trusted, reliable and cost-effective online marketplace for the widest range of quality vehicles in Nigeria;
-                partnering with indigenous manufacturing companies and top dealers.</P
+                service.</P>
+                <p>We offer a trusted, reliable and cost-effective online marketplace for the widest range of quality vehicles in Nigeria;
+                partnering with indigenous / international manufacturing companies and top dealers.</P
               >
             </div>
           </div>

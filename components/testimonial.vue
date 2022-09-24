@@ -20,12 +20,10 @@
               </div>
             </div>
             <div class="author-content">
-              <h5 class="left-line pl-40">Somalia Silva, <span class="desig">Manager</span></h5>
+              <!-- <h5 class="left-line pl-40">Somalia Silva, <span class="desig">Manager</span></h5> -->
+              <h5 class="left-line pl-40">Adewale Soyinka</h5>
             </div>
-            <p>
-              But I must explain to you how all this mistake denouncing pleasure and praising pain was born and I will give you a complete account of
-              the system, and expound the actual
-            </p>
+            <p>Elitemo is the best car dealing platform with outstanding customer service and support from professionals.</p>
             <div class="rating">
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
@@ -46,11 +44,12 @@
               </div>
             </div>
             <div class="author-content">
-              <h5 class="left-line pl-40">Michelle Nelson, <span class="desig">Consultant</span></h5>
+              <!-- <h5 class="left-line pl-40">Michelle Nelson, <span class="desig">Consultant</span></h5> -->
+              <h5 class="left-line pl-40">Micheal Nelson</h5>
             </div>
             <p>
-              But I must explain to you how all this mistake denouncing pleasure and praising pain was born and I will give you a complete account of
-              the system, and expound the actual
+              I am overwhelmed by the lovely experience I had dealing with Elitemo, I'm definitely referring my friends and colleagues at work
+              Cheers to many more deals!!!
             </p>
             <div class="rating">
               <i class="fa fa-star"></i>
@@ -72,12 +71,10 @@
               </div>
             </div>
             <div class="author-content">
-              <h5 class="left-line pl-40">Carolyn Stone, <span class="desig">Designer</span></h5>
+              <!-- <h5 class="left-line pl-40">Carolyn Stone, <span class="desig">Designer</span></h5> -->
+              <h5 class="left-line pl-40">Okeke Ajason</h5>
             </div>
-            <p>
-              But I must explain to you how all this mistake denouncing pleasure and praising pain was born and I will give you a complete account of
-              the system, and expound the actual
-            </p>
+            <p>100 percent customer satisfaction, Friendly communication, 24/7 customer support Elitemo sure is the best!!!</p>
             <div class="rating">
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
