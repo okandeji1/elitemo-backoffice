@@ -2,10 +2,10 @@
   <div class="new">
     <lazy-car-user-header title="Admin Area" icon="menu" />
 
-    <div class="my-4 mb-4 first_admin">
-      <ul class="grid gap-2 text-center grid-cols-h-competitions text-xs-cus">
+    <div class="my-4 mb-4 flex px-2">
+      <ul class="flex flex-col md:flex-row justify-between items-center text-center w-full text-xs-cus">
         <li
-          class="flex flex-col items-center justify-around h-12 py-8 leading-9 text-black rounded cursor-pointer opa min-w-40 text-text-d-primary bg-primary-sidebar"
+          class="flex flex-col justify-around h-12 py-8 leading-9 text-black rounded cursor-pointer opa min-w-40 text-text-d-primary bg-primary-sidebar mb-2 w-full md:w-40"
           v-for="btn in buttons"
           :key="btn.id"
         >
@@ -21,14 +21,14 @@
       </ul>
     </div>
     <!-- Tenant -->
-    <div class="my-2 mb-4 second_1_admin table-heading">
+    <div class="my-2 mb-4 second_1_admin table-heading px-2">
       <lazy-car-user-header title="Accounting" icon="menu" />
 
       <a-table bordered :columns="saleHeading" :data-source="accountingData" :scroll="{ x: 'calc(700px + 50%)', y: 420 }" :pagination="false">
       </a-table>
     </div>
     <!-- Tenant -->
-    <div class="my-2 mb-4 second_2_admin table-heading">
+    <div class="my-2 mb-4 second_2_admin table-heading px-2">
       <lazy-car-user-header title="Sales" icon="menu" />
 
       <a-table bordered :columns="saleHeading" :data-source="gameData" :scroll="{ x: 'calc(700px + 50%)', y: 420 }" :pagination="false"> </a-table>
@@ -38,7 +38,7 @@
       <lazy-car-chart-bar :chart-data="chartdata" :options="chartOptions"></lazy-car-chart-bar>
     </div>
 
-    <div class="my-2 mb-4 fifth_admin table-heading">
+    <div class="my-2 mb-4 fifth_admin table-heading px-2">
       <lazy-car-user-header title="Last 10 Transactions" icon="menu" />
 
       <a-table bordered :columns="transactionColumns" :data-source="getTransactions.data" :scroll="{ x: 'calc(700px + 50%)', y: 420 }" :pagination="false">

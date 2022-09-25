@@ -136,7 +136,7 @@ export default {
         try {
           const res = await this.addPostApi(formData);
 
-          this.createFreshDataObject();
+          await this.createFreshDataObject();
           this.toggleAddPostDrawer(false);
           this.isLoading = false;
           this.getPostsApi({ query: { limit: 50 } });

@@ -5,8 +5,7 @@
     <div id="transaction-filter" class="m-4 bg-primary-btn-tert">
       <div class="border-b border-primary-divider">
         <div class="px-4 py-2">
-          <!--FIXME:  justify-end -->
-          <div class="flex items-center w-full my-2">
+          <div class="flex items-center w-full my-2 justify-end">
             <lazy-car-export-excel
               :csvData="{
                 records: dealers,

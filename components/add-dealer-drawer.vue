@@ -146,7 +146,7 @@ export default {
         try {
           const res = await this.addDealerApi(formData);
 
-          this.createFreshDataObject();
+          await this.createFreshDataObject();
           this.toggleAddDealerDrawer(false);
           this.isLoading = false;
           this.getDealerApi({ query: { limit: 50 } });

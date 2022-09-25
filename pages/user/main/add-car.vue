@@ -1,36 +1,36 @@
 <template>
   <main>
-    <div class="mx-auto">
+    <div class="flex justify-center items-center flex-col">
       <div class="flex justify-center">
-        <h1 class="text-2xl font-bold md:mt-8 text-primary-default-main">Add New Car</h1>
+        <h1 class="text-2xl font-bold md:mt-4 text-primary-default-main">Add New Car</h1>
       </div>
-      <div class="px-2 my-2 text-xs md:px-8">
+      <div class="text-xs">
         <!-- Car Data -->
-        <form class="mx-auto mt-20 wrapper form">
-          <div class="mb-4 border-b border-gray-500 main form-data">
-            <div class="mb-4 left">
-              <div class="mb-4">
+        <form class="justify-center items-center">
+          <div class="border-b border-gray-500 flex flex-col md:flex-row justify-between w-full">
+            <div class="flex flex-col w-full p-4 md:p-x2">
+              <div class="">
                 <label class="text-sm font-semibold text-primary-default-main">Model</label>
                 <a-input size="large" placeholder="Enter model" v-model.trim="car.model" class="mt-1" @blur="$v.car.model.$touch()"> </a-input>
                 <template v-if="$v.car.model.$error">
                   <small class="text-xs text-red-600" v-if="!$v.car.model.required">Model is required</small>
                 </template>
               </div>
-              <div class="mb-4">
+              <div class="">
                 <label class="text-sm font-semibold text-primary-default-main">Brand</label>
                 <a-input size="large" placeholder="Enter brand" v-model.trim="car.brand" @blur="$v.car.brand.$touch()" class="mt-1"> </a-input>
                 <template v-if="$v.car.brand.$error">
                   <small class="text-xs text-red-600" v-if="!$v.car.brand.required">Brand is required</small>
                 </template>
               </div>
-              <div class="mb-4">
+              <div class="">
                 <label class="text-sm font-semibold text-primary-default-main">Make</label>
                 <a-input size="large" placeholder="Enter make" v-model.trim="car.make" @blur="$v.car.make.$touch()" class="mt-1"> </a-input>
                 <template v-if="$v.car.make.$error">
                   <small class="text-xs text-red-600" v-if="!$v.car.make.required">Make is required</small>
                 </template>
               </div>
-              <div class="mb-4">
+              <div class="">
                 <label class="text-sm font-semibold text-primary-default-main">cost Price</label>
                 <a-input
                   size="large"
@@ -45,7 +45,7 @@
                   <small class="text-xs text-red-600" v-if="!$v.car.costPrice.required">cost price is required</small>
                 </template>
               </div>
-              <div class="mb-4">
+              <div class="">
                 <label class="text-sm font-semibold text-primary-default-main">Selling Price</label>
                 <a-input
                   size="large"
@@ -60,7 +60,7 @@
                   <small class="text-xs text-red-600" v-if="!$v.car.sellingPrice.required">selling price is required</small>
                 </template>
               </div>
-              <div class="mb-4">
+              <div class="">
                 <label for="image" class="text-sm font-semibold text-primary-default-main"> Images</label>
                 <a-input
                   @blur="$v.car.image.$touch()"
@@ -77,8 +77,8 @@
                 </template>
               </div>
             </div>
-            <div class="mb-4 right">
-              <div class="mb-4">
+            <div class="flex flex-col w-full p-4 md:p-x2">
+              <div class="">
                 <label class="text-sm font-semibold text-primary-default-main">Dealer</label>
                 <a-select v-model="car.dealer" class="block mt-1" size="large">
                   <a-select-option v-for="(dealer, index) in dealers" :key="index" :value="dealer.name"> {{ dealer.name }} </a-select-option>
@@ -87,7 +87,7 @@
                   <small class="text-xs text-red-600" v-if="!$v.car.dealer.required">Select a dealer</small>
                 </template>
               </div>
-              <div class="mb-4">
+              <div class="">
                 <label class="text-sm font-semibold text-primary-default-main">Type</label>
                 <a-select v-model="car.type" class="block mt-1" size="large">
                   <a-select-option v-for="(type, index) in types" :key="index" :value="type.slug"> {{ type.slug }} </a-select-option>
@@ -96,7 +96,7 @@
                   <small class="text-xs text-red-600" v-if="!$v.car.type.required">Select a car type</small>
                 </template>
               </div>
-              <div class="mb-4">
+              <div class="">
                 <label class="text-sm font-semibold text-primary-default-main">Description</label>
                 <client-only placeholder="Loading Your Editor...">
                   <vue-editor :editorToolbar="customToolbar" placeholder="Description..." v-model="car.description" class="text-black"></vue-editor>
@@ -345,8 +345,8 @@ export default {
           const res = await this.addCarApi(formData);
 
           if (res.status) {
-            this.createFreshDataObject();
-            this.createFreshSpecObject();
+            await this.createFreshDataObject();
+            await this.createFreshSpecObject();
             this.isLoading = false;
 
             notify({
@@ -459,7 +459,7 @@ export default {
       addCarApi: 'car/addCarApi',
     }),
   },
-  
+
   mounted() {
     this.responsiveCustomBar();
   },

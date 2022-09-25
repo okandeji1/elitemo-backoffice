@@ -322,7 +322,7 @@ button:focus {
 .ant-select-selection {
   display: block;
   box-sizing: border-box;
-  background-color: #1a2633;
+  background-color: var(--colors-primary-input, rgba(186,133,196,0.2));
   border: 1px solid #d9d9d9;
   border-top-width: 1.02px;
   border-radius: 0.5rem;
