@@ -122,7 +122,7 @@
         <div class="row" v-if="featuredCars.length > 0">
           <div class="col-lg-4 col-md-6" v-for="(item, index) in featuredCars" :key="index">
             <div class="car-box-3">
-              <div class="car-thumbnail">
+              <div class="car-thumbnail h-56">
                 <a href="#" class="car-img">
                   <div class="for">{{ item.type }}</div>
                   <img class="d-block w-100" :src="item.images[0]" alt="car" />
@@ -601,5 +601,9 @@ export default {
 .ourOfferH3Span {
   color: #fff;
   font-size: 22px;
+}
+
+.car-box-3 {
+  height: 28rem;
 }
 </style>
